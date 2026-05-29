@@ -1,0 +1,70 @@
+[
+  {
+    "name": "Typeform",
+    "category": "Survey / Form Builder",
+    "urls": {
+      "blog": "https://www.typeform.com/blog/",
+      "product_updates": "https://www.typeform.com/product-updates/"
+    },
+    "focus": ["NPS", "survey logic", "integrations", "AI features"]
+  },
+  {
+    "name": "Delighted",
+    "category": "NPS / CSAT / CES",
+    "urls": {
+      "blog": "https://delighted.com/blog",
+      "help": "https://help.delighted.com/hc/en-us"
+    },
+    "focus": ["NPS", "CSAT", "CES", "exit survey", "reporting"]
+  },
+  {
+    "name": "AskNicely",
+    "category": "NPS / Customer Feedback",
+    "urls": {
+      "blog": "https://www.asknicely.com/blog"
+    },
+    "focus": ["NPS", "frontline feedback", "coaching", "integrations"]
+  },
+  {
+    "name": "Survicate",
+    "category": "Survey / NPS / In-product",
+    "urls": {
+      "blog": "https://survicate.com/blog/",
+      "changelog": "https://survicate.com/product-updates/"
+    },
+    "focus": ["in-product survey", "NPS", "exit intent", "Shopify"]
+  },
+  {
+    "name": "Hotjar",
+    "category": "Heatmap / Survey / Feedback",
+    "urls": {
+      "blog": "https://www.hotjar.com/blog/",
+      "changelog": "https://changelog.hotjar.com/"
+    },
+    "focus": ["survey", "feedback widget", "heatmap", "session recording"]
+  },
+  {
+    "name": "SurveyMonkey",
+    "category": "Survey Platform",
+    "urls": {
+      "blog": "https://www.surveymonkey.com/curiosity/"
+    },
+    "focus": ["NPS", "AI analysis", "enterprise", "integrations"]
+  },
+  {
+    "name": "Qualtrics",
+    "category": "Enterprise XM / NPS",
+    "urls": {
+      "blog": "https://www.qualtrics.com/blog/"
+    },
+    "focus": ["NPS", "AI insights", "enterprise", "CX"]
+  },
+  {
+    "name": "Medallia",
+    "category": "Enterprise CX / NPS",
+    "urls": {
+      "blog": "https://www.medallia.com/blog/"
+    },
+    "focus": ["NPS", "AI", "enterprise CX", "real-time feedback"]
+  }
+]
