@@ -6,438 +6,213 @@
 <title>Insightto 竞品情报中心</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ── Reset ── */
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;overflow:hidden}
-body{font-family:'Inter',-apple-system,sans-serif;background:#f0f2f8;color:#1e1e2e;display:flex;flex-direction:column}
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; overflow: hidden; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #f0f2f8; display: flex; flex-direction: column; }
 
-/* ── Top Bar ── */
-.topbar{
-  height:56px;flex-shrink:0;
-  background:linear-gradient(135deg,#5c4fff 0%,#7c3aed 100%);
-  display:flex;align-items:center;padding:0 24px;gap:16px;
-  box-shadow:0 2px 8px rgba(92,79,255,.3);
-  z-index:100;
-}
-.topbar-logo{
-  font-size:15px;font-weight:700;color:white;letter-spacing:-.3px;
-  display:flex;align-items:center;gap:8px;
-}
-.topbar-logo span{opacity:.7;font-weight:400}
-.topbar-divider{width:1px;height:20px;background:rgba(255,255,255,.25)}
-.topbar-title{font-size:13px;color:rgba(255,255,255,.85);font-weight:500}
-.topbar-right{margin-left:auto;font-size:12px;color:rgba(255,255,255,.6)}
-.topbar-badge{
-  background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);
-  color:white;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;
-}
+  /* ── Top Bar ── */
+  .topbar {
+    height: 52px; flex-shrink: 0;
+    background: linear-gradient(135deg, #5c4fff 0%, #7c3aed 100%);
+    display: flex; align-items: center; padding: 0 20px; gap: 14px;
+    box-shadow: 0 2px 8px rgba(92,79,255,.25);
+  }
+  .topbar-logo {
+    font-size: 14px; font-weight: 700; color: white;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .topbar-logo .sub { opacity: .65; font-weight: 400; }
+  .topbar-sep { width: 1px; height: 18px; background: rgba(255,255,255,.2); }
+  .topbar-sub { font-size: 12px; color: rgba(255,255,255,.75); }
+  .topbar-right { margin-left: auto; font-size: 11px; color: rgba(255,255,255,.55); }
+  .topbar-pill {
+    background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.2);
+    color: white; font-size: 10px; font-weight: 600; letter-spacing: 1px;
+    padding: 3px 9px; border-radius: 20px;
+  }
 
-/* ── Layout ── */
-.layout{display:flex;flex:1;overflow:hidden}
+  /* ── Layout ── */
+  .layout { display: flex; flex: 1; overflow: hidden; }
 
-/* ── Sidebar ── */
-.sidebar{
-  width:260px;flex-shrink:0;
-  background:white;
-  border-right:1px solid #e8e8f0;
-  display:flex;flex-direction:column;
-  overflow:hidden;
-}
-.sidebar-header{
-  padding:16px 20px 12px;
-  border-bottom:1px solid #f0f2f8;
-  flex-shrink:0;
-}
-.sidebar-header h2{font-size:12px;font-weight:600;color:#9ca3af;text-transform:uppercase;letter-spacing:.8px}
-.sidebar-search{
-  margin-top:10px;
-  display:flex;align-items:center;gap:8px;
-  background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;
-  padding:7px 12px;
-}
-.sidebar-search input{
-  border:none;background:transparent;outline:none;
-  font-size:13px;color:#374151;width:100%;
-  font-family:inherit;
-}
-.sidebar-search input::placeholder{color:#9ca3af}
+  /* ── Sidebar ── */
+  .sidebar {
+    width: 240px; flex-shrink: 0;
+    background: white; border-right: 1px solid #e8e8f0;
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  .sidebar-head {
+    padding: 14px 16px 10px; border-bottom: 1px solid #f0f2f8; flex-shrink: 0;
+  }
+  .sidebar-head h2 {
+    font-size: 11px; font-weight: 600; color: #9ca3af;
+    text-transform: uppercase; letter-spacing: .8px; margin-bottom: 10px;
+  }
+  .search-box {
+    display: flex; align-items: center; gap: 7px;
+    background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 7px;
+    padding: 6px 10px;
+  }
+  .search-box input {
+    border: none; background: transparent; outline: none;
+    font-size: 12px; color: #374151; width: 100%; font-family: inherit;
+  }
+  .search-box input::placeholder { color: #9ca3af; }
 
-.sidebar-scroll{flex:1;overflow-y:auto;padding:8px 0}
-.sidebar-scroll::-webkit-scrollbar{width:4px}
-.sidebar-scroll::-webkit-scrollbar-track{background:transparent}
-.sidebar-scroll::-webkit-scrollbar-thumb{background:#e5e7eb;border-radius:2px}
+  .sidebar-scroll { flex: 1; overflow-y: auto; padding: 6px 0; }
+  .sidebar-scroll::-webkit-scrollbar { width: 3px; }
+  .sidebar-scroll::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 2px; }
 
-.sidebar-group{margin-bottom:4px}
-.sidebar-group-label{
-  font-size:11px;font-weight:600;color:#9ca3af;
-  text-transform:uppercase;letter-spacing:.8px;
-  padding:10px 20px 4px;
-}
-.sidebar-item{
-  display:flex;align-items:center;gap:10px;
-  padding:9px 20px;cursor:pointer;
-  border-radius:0;transition:background .15s;
-  position:relative;
-}
-.sidebar-item:hover{background:#f9fafb}
-.sidebar-item.active{background:#f5f3ff}
-.sidebar-item.active::before{
-  content:'';position:absolute;left:0;top:0;bottom:0;
-  width:3px;background:#5c4fff;border-radius:0 2px 2px 0;
-}
-.sidebar-item-icon{
-  width:28px;height:28px;border-radius:6px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:13px;flex-shrink:0;
-}
-.icon-daily{background:#eff6ff;color:#2563eb}
-.icon-weekly{background:#f5f3ff;color:#7c3aed}
-.sidebar-item-info{flex:1;min-width:0}
-.sidebar-item-date{font-size:13px;font-weight:600;color:#1e1e2e;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sidebar-item.active .sidebar-item-date{color:#5c4fff}
-.sidebar-item-type{font-size:11px;color:#9ca3af;margin-top:1px}
-.sidebar-item-dot{
-  width:6px;height:6px;border-radius:50%;background:#5c4fff;
-  flex-shrink:0;opacity:0;
-}
-.sidebar-item.active .sidebar-item-dot{opacity:1}
+  .group-label {
+    font-size: 10px; font-weight: 600; color: #9ca3af;
+    text-transform: uppercase; letter-spacing: .8px;
+    padding: 10px 16px 4px;
+  }
+  .nav-item {
+    display: flex; align-items: center; gap: 9px;
+    padding: 8px 16px; cursor: pointer; transition: background .12s;
+    position: relative;
+  }
+  .nav-item:hover { background: #f9fafb; }
+  .nav-item.active { background: #f5f3ff; }
+  .nav-item.active::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px; background: #5c4fff; border-radius: 0 2px 2px 0;
+  }
+  .nav-icon {
+    width: 26px; height: 26px; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; flex-shrink: 0;
+  }
+  .icon-d { background: #eff6ff; }
+  .icon-w { background: #f5f3ff; }
+  .nav-info { flex: 1; min-width: 0; }
+  .nav-date {
+    font-size: 12px; font-weight: 600; color: #1e1e2e;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .nav-item.active .nav-date { color: #5c4fff; }
+  .nav-type { font-size: 10px; color: #9ca3af; margin-top: 1px; }
+  .nav-dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: #5c4fff; flex-shrink: 0; opacity: 0;
+  }
+  .nav-item.active .nav-dot { opacity: 1; }
 
-/* ── Main Content ── */
-.main{flex:1;overflow-y:auto;padding:28px 32px}
-.main::-webkit-scrollbar{width:6px}
-.main::-webkit-scrollbar-track{background:transparent}
-.main::-webkit-scrollbar-thumb{background:#d1d5db;border-radius:3px}
+  .no-results { padding: 16px; text-align: center; font-size: 12px; color: #9ca3af; }
 
-/* ── Report Sections ── */
-.report-section{max-width:820px;margin:0 auto}
-.report-header{
-  background:linear-gradient(135deg,#5c4fff 0%,#7c3aed 100%);
-  border-radius:16px;padding:28px 32px;color:white;margin-bottom:20px;
-}
-.report-title{font-size:20px;font-weight:700;margin:6px 0}
-.report-meta{font-size:12px;opacity:.75}
+  /* ── Main (iframe) ── */
+  .main { flex: 1; overflow: hidden; background: #f0f2f8; }
+  #report-frame {
+    width: 100%; height: 100%;
+    border: none; display: block;
+  }
 
-/* ── Cards (inherited from report HTML) ── */
-.card{background:white;border-radius:12px;padding:24px 28px;margin-bottom:14px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
-.comp-section{margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid #f0f2f8}
-.comp-section:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
-.comp-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
-.comp-name{font-size:15px;font-weight:700;color:#1e1e2e}
-.comp-cat{font-size:12px;color:#6b7280;background:#f3f4f6;padding:3px 10px;border-radius:20px}
-.source-tag{font-size:11px;color:#9ca3af;margin-left:auto}
-.update-item{margin-bottom:7px;font-size:14px;color:#374151;padding-left:16px;position:relative}
-.update-item::before{content:"•";position:absolute;left:0;color:#5c4fff}
-.highlight{background:#fef3c7;border-radius:4px;padding:2px 6px;font-size:13px;color:#92400e;font-weight:600;display:inline-block;margin-top:4px}
-.shutdown-badge{background:#fee2e2;color:#991b1b;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px}
-.action-section{background:linear-gradient(135deg,#f5f3ff 0%,#ede9fe 100%);border-radius:12px;padding:22px 26px;margin-top:8px}
-.action-section h2{font-size:15px;font-weight:700;color:#5c4fff;margin-bottom:14px}
-.action-item{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start}
-.action-num{background:#5c4fff;color:white;font-size:12px;font-weight:700;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-.action-text{font-size:14px;color:#374151;line-height:1.6}
-.action-text strong{color:#1e1e2e}
-.trend-box{background:#f0fdf4;border-left:3px solid #22c55e;padding:10px 14px;border-radius:0 8px 8px 0;margin:10px 0;font-size:13px;color:#166534}
-h2{font-size:15px;font-weight:700;color:#1e1e2e;margin-bottom:12px}
-h3{font-size:12px;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;margin:12px 0 7px}
-p{margin-bottom:8px;font-size:14px;color:#374151;line-height:1.7}
-li{font-size:14px;color:#374151;margin-left:20px;margin-bottom:4px;line-height:1.6}
-strong{color:#1e1e2e}
-blockquote{background:#fef3c7;border-left:3px solid #f59e0b;padding:10px 14px;border-radius:0 8px 8px 0;font-size:13px;color:#92400e;margin:10px 0}
-hr{border:none;border-top:1px solid #e8e8f0;margin:16px 0}
-
-/* ── Empty State ── */
-.empty-state{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  height:60vh;color:#9ca3af;text-align:center;
-}
-.empty-state .icon{font-size:48px;margin-bottom:16px}
-.empty-state h3{font-size:16px;font-weight:600;color:#6b7280;margin-bottom:8px}
-.empty-state p{font-size:14px}
-
-/* ── No results ── */
-.no-results{padding:20px;text-align:center;font-size:13px;color:#9ca3af}
+  /* ── Empty ── */
+  .empty {
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; height: 100%; color: #9ca3af; text-align: center;
+  }
+  .empty .icon { font-size: 40px; margin-bottom: 12px; }
+  .empty p { font-size: 13px; }
 </style>
 </head>
 <body>
 
-<!-- Top Bar -->
 <div class="topbar">
   <div class="topbar-logo">
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-      <rect width="20" height="20" rx="5" fill="rgba(255,255,255,0.2)"/>
-      <circle cx="10" cy="10" r="4" fill="white" opacity="0.9"/>
-      <circle cx="10" cy="10" r="2" fill="#5c4fff"/>
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <rect width="18" height="18" rx="5" fill="rgba(255,255,255,0.2)"/>
+      <circle cx="9" cy="9" r="3.5" fill="white" opacity="0.9"/>
+      <circle cx="9" cy="9" r="1.8" fill="#5c4fff"/>
     </svg>
-    Insightto <span>竞品情报中心</span>
+    Insightto <span class="sub">竞品情报中心</span>
   </div>
-  <div class="topbar-divider"></div>
-  <div class="topbar-title">Competitor Intelligence Hub</div>
+  <div class="topbar-sep"></div>
+  <div class="topbar-sub">Competitor Intelligence Hub</div>
   <div class="topbar-right">
-    <span class="topbar-badge">自动更新</span>
-    &nbsp; 最后构建：2026-05-29 10:28
+    <span class="topbar-pill">AUTO</span>&nbsp; 最后构建：2026-05-29 14:10
   </div>
 </div>
 
-<!-- Layout -->
 <div class="layout">
-
-  <!-- Sidebar -->
   <div class="sidebar">
-    <div class="sidebar-header">
+    <div class="sidebar-head">
       <h2>报告目录</h2>
-      <div class="sidebar-search">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-          <circle cx="6" cy="6" r="4.5" stroke="#9ca3af" stroke-width="1.3"/>
-          <path d="M9.5 9.5L12 12" stroke="#9ca3af" stroke-width="1.3" stroke-linecap="round"/>
+      <div class="search-box">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <circle cx="5" cy="5" r="4" stroke="#9ca3af" stroke-width="1.2"/>
+          <path d="M8.5 8.5L11 11" stroke="#9ca3af" stroke-width="1.2" stroke-linecap="round"/>
         </svg>
-        <input type="text" id="search-input" placeholder="搜索报告..." oninput="filterReports(this.value)">
+        <input type="text" id="search" placeholder="搜索日期或类型…" oninput="filter(this.value)">
       </div>
     </div>
-    <div class="sidebar-scroll" id="sidebar-list">
-      <!-- 由 JS 渲染 -->
-    </div>
+    <div class="sidebar-scroll" id="nav-list"></div>
   </div>
 
-  <!-- Main -->
-  <div class="main" id="main-content">
-    
-<div id="section-daily_2026-05-28" class="report-section" style="display:block">
-  <div class="report-header">
-    <div class="report-meta">Insightto · 竞品情报系统</div>
-    <h1 class="report-title">Insightto 竞品日报 — 2026-05-28</h1>
-    <div class="report-meta">2026-05-28 · 日报</div>
+  <div class="main">
+    <iframe id="report-frame" src="reports/daily/daily_2026-05-28.html"></iframe>
   </div>
-  <!-- Header -->
-  <h1>竞品日报 — 2026-05-28</h1>
-      <div class="meta">生成时间：2026-05-28 18:13 · 数据来源：WebSearch 实时搜索</div>
-    </div>
-    <div class="badge">DAILY</div>
-  </div>
-
-  <!-- 重要预警 -->
-  <div class="card" style="border-left:4px solid #ef4444">
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-      <span style="font-size:18px">🚨</span>
-      <span style="font-size:15px;font-weight:700;color:#ef4444">重要情报：Delighted 已宣布关闭</span>
-    </div>
-    <p style="font-size:14px;color:#374151">Qualtrics 收购 Delighted 后宣布停止运营，已停止新功能开发，续费截止至2026年6月。<strong>大量 Delighted 用户正在寻找替代产品</strong>，这是 Insightto 获客的重要窗口期。</p>
-  </div>
-
-  <div class="card">
-
-    <!-- Typeform -->
-    <div class="comp-section">
-      <div class="comp-header">
-        <span class="comp-name">Typeform</span>
-        <span class="comp-cat">Survey / Form Builder</span>
-        <span class="source-tag">来源: WebSearch</span>
-      </div>
-      <h3>2026 Winter Release 重点更新（2026年2月发布）</h3>
-      <div class="update-item"><strong>AI Data Enrichment</strong>：表单提交后自动用 AI 补全潜在客户数据（公司规模、行业等），提升 Lead 转化率</div>
-      <div class="update-item"><strong>AI Research Studies</strong>：全新功能，支持真实参与者 + AI 主持对话 + 即时洞察，将定性研究自动化</div>
-      <div class="update-item"><strong>端到端工作流自动化</strong>：将表单与下游工具（CRM、邮件等）打通，无需跳转工具</div>
-      <div class="update-item"><strong>下一代平台</strong>：统一 Forms、Data、Automation 三层，从"表单工具"转型为"工作流平台"</div>
-      <div class="highlight">⚡ 与 Insightto 相关：AI 分析洞察方向高度重叠，Typeform 正在把 AI 做深；Insightto 的 AI 分析需要加速，否则差距会拉大</div>
-    </div>
-
-    <!-- AskNicely -->
-    <div class="comp-section">
-      <div class="comp-header">
-        <span class="comp-name">AskNicely</span>
-        <span class="comp-cat">NPS / Customer Feedback</span>
-        <span class="source-tag">来源: WebSearch (官方博客)</span>
-      </div>
-      <h3>Q1 2026 产品更新（2026年5月6日发布）</h3>
-      <div class="update-item"><strong>Recovery Survey（恢复调查）</strong>：问题解决后可向客户重新发送问卷，让客户更新评分，替代手动修改分数的流程</div>
-      <div class="update-item"><strong>Ask NiceAI®</strong>（2026年3月30日发布）：全新 AI 产品，将客户反馈转化为收入增长洞察，支持动态问卷、主题洞察、评论回复、回复审核</div>
-      <div class="update-item">Q1 还包含多项 UI 改进和集成更新（具体条目见官方博客）</div>
-      <div class="highlight">⚡ 与 Insightto 相关：Recovery Survey 是个好思路——允许商家在处理完投诉后重新收集 NPS，可以考虑加入 Insightto 的追问流程</div>
-      <div class="highlight">⚡ Ask NiceAI 的"反馈→收入"叙事值得借鉴，Insightto 的 AI 分析也可以强化"提升复购/减少流失"的价值主张</div>
-    </div>
-
-    <!-- SurveyMonkey -->
-    <div class="comp-section">
-      <div class="comp-header">
-        <span class="comp-name">SurveyMonkey</span>
-        <span class="comp-cat">Survey Platform</span>
-        <span class="source-tag">来源: WebSearch (官方 Release Notes)</span>
-      </div>
-      <h3>AI Analysis Suite（2025年9月发布，持续迭代中）</h3>
-      <div class="update-item"><strong>Thematic Analysis</strong>：自动对开放题回答进行主题分类</div>
-      <div class="update-item"><strong>AI Summary</strong>：基于 Thematic Analysis 自动生成自然语言段落摘要</div>
-      <div class="update-item"><strong>Analyze with AI</strong>：对话式数据分析，用自然语言提问即可获得洞察</div>
-      <div class="update-item">新设计工具：更美观的问卷模版和品牌定制能力</div>
-      <div class="highlight">⚡ 与 Insightto 相关：Thematic Analysis + AI Summary 是 Insightto AI 分析模块的直接竞争，需要在 Shopify 场景下做差异化（如"哪类商品收到最多负面反馈"）</div>
-    </div>
-
-    <!-- Hotjar -->
-    <div class="comp-section">
-      <div class="comp-header">
-        <span class="comp-name">Hotjar</span>
-        <span class="comp-cat">Heatmap / Survey / Feedback</span>
-        <span class="source-tag">来源: WebSearch</span>
-      </div>
-      <h3>近期动态</h3>
-      <div class="update-item"><strong>Feedback 并入 Survey</strong>（2024年9月）：Feedback 工具已整合进 Surveys，统一入口</div>
-      <div class="update-item">2026 年持续强化 AI 能力，AI 引擎覆盖热图分析、会话录制、问卷洞察全链路</div>
-      <div class="update-item">定位从"行为分析"向"AI 驱动的用户体验平台"转型</div>
-      <div class="highlight">⚡ 与 Insightto 相关：Hotjar 的 Exit Survey 与 Insightto Exit Survey 直接竞争，但 Hotjar 面向通用网站，Insightto 专注 Shopify 电商场景，需强化 Shopify 原生优势</div>
-    </div>
-
-    <!-- Survicate -->
-    <div class="comp-section">
-      <div class="comp-header">
-        <span class="comp-name">Survicate</span>
-        <span class="comp-cat">Survey / NPS / In-product</span>
-        <span class="source-tag">来源: WebSearch</span>
-      </div>
-      <h3>近期功能更新</h3>
-      <div class="update-item"><strong>AI Research Assistant</strong>：AI 辅助问卷设计和结果分析</div>
-      <div class="update-item"><strong>Follow-up Question Generation</strong>：AI 自动生成追问题目</div>
-      <div class="update-item"><strong>Text Categorization</strong>：开放题自动分类</div>
-      <div class="update-item">新增：项目级用户权限、多选回复、按季度数据筛选、Survey Delay 触发器、Survey Event 触发器</div>
-      <div class="highlight">⚡ 与 Insightto 相关：Survey Delay 触发器和 Event 触发器与 Insightto 的问卷触发逻辑高度重叠；AI 追问生成是 Insightto 可以快速跟进的功能点</div>
-    </div>
-
-    <!-- Delighted -->
-    <div class="comp-section">
-      <div class="comp-header">
-        <span class="comp-name">Delighted</span>
-        <span class="comp-cat">NPS / CSAT / CES</span>
-        <span class="shutdown-badge">⚠️ 已宣布关闭</span>
-        <span class="source-tag">来源: WebSearch</span>
-      </div>
-      <div class="update-item">Qualtrics 收购后宣布停止新功能开发，续费截止2026年6月</div>
-      <div class="update-item">大量用户正在迁移，主要迁移目标：Survicate、SmartSurvey、Responsly</div>
-      <div class="highlight">⚡ 机会：Delighted 用户群体（中小企业 NPS 用户）与 Insightto 目标用户高度重合，建议立即制作"从 Delighted 迁移到 Insightto"的落地页和迁移指南</div>
-    </div>
-
-  </div>
-
-  <!-- 行业趋势 -->
-  <div class="card">
-    <h2 style="font-size:16px;font-weight:700;color:#1e1e2e;margin-bottom:16px">📊 行业趋势洞察</h2>
-    <div class="trend-box">
-      <strong>趋势1：AI 分析成标配</strong> — Typeform、AskNicely、SurveyMonkey、Survicate 均在 2025-2026 年密集上线 AI 功能（主题分析、对话式洞察、AI 追问）。AI 已从差异化功能变为基础能力。
-    </div>
-    <div class="trend-box">
-      <strong>趋势2：从"收集"到"行动"</strong> — AskNicely 的 Ask NiceAI 主打"反馈→收入"，Recovery Survey 主打"闭环处理"。行业正在从数据收集转向驱动业务行动。
-    </div>
-    <div class="trend-box">
-      <strong>趋势3：市场整合带来机会</strong> — Delighted 关闭，中小企业 NPS 市场出现空缺。Shopify 生态内的专属工具（如 Insightto）有机会承接这批用户。
-    </div>
-  </div>
-
-  <!-- 行动建议 -->
-  <div class="action-section">
-    <h2>📌 对 Insightto 产品团队的行动建议</h2>
-    <div class="action-item">
-      <div class="action-num">1</div>
-      <div class="action-text">
-        <strong>立即抓住 Delighted 关闭窗口期</strong><br>
-        制作"Delighted 替代方案"落地页，突出 Insightto 的 Shopify 原生优势 + NPS 专注度。在 G2、Product Hunt、Reddit 等平台发布对比内容，截止时间：2026年6月前。
-      </div>
-    </div>
-    <div class="action-item">
-      <div class="action-num">2</div>
-      <div class="action-text">
-        <strong>加速 AI 分析功能迭代</strong><br>
-        参考 SurveyMonkey 的 Thematic Analysis + AI Summary 组合，在 Insightto 的 NPS 报告中加入"AI 自动摘要"（一句话总结本月客户情绪），降低商家解读数据的门槛。
-      </div>
-    </div>
-    <div class="action-item">
-      <div class="action-num">3</div>
-      <div class="action-text">
-        <strong>参考 AskNicely 的 Recovery Survey 设计追问闭环</strong><br>
-        在 Insightto 的 NPS 追问流程中增加"问题解决后重新评分"功能，帮助商家将低分 Detractor 转化为 Promoter，强化"提升 NPS 分数"的核心价值主张。
-      </div>
-    </div>
-  </div>
-</div>
-
-  </div>
-
 </div>
 
 <script>
-const REPORTS = [{"id": "daily_2026-05-28", "title": "Insightto 竞品日报 — 2026-05-28", "date": "2026-05-28", "type": "daily"}];
+const REPORTS = [{"id": "daily_2026-05-28", "date": "2026-05-28", "type": "daily", "label": "日报 2026-05-28", "path": "reports/daily/daily_2026-05-28.html"}];
+let current = REPORTS.length ? REPORTS[0].id : null;
 
-function renderSidebar(list) {
-  const container = document.getElementById('sidebar-list');
+function renderNav(list) {
+  const el = document.getElementById('nav-list');
   if (!list.length) {
-    container.innerHTML = '<div class="no-results">没有找到匹配的报告</div>';
+    el.innerHTML = '<div class="no-results">没有匹配的报告</div>';
     return;
   }
-
-  // 按月分组
   const groups = {};
   list.forEach(r => {
-    const month = r.date ? r.date.slice(0, 7) : '未知';
-    if (!groups[month]) groups[month] = [];
-    groups[month].push(r);
+    const m = r.date.slice(0, 7);
+    (groups[m] = groups[m] || []).push(r);
   });
-
   let html = '';
-  Object.keys(groups).sort().reverse().forEach(month => {
-    html += `<div class="sidebar-group">
-      <div class="sidebar-group-label">${month}</div>`;
-    groups[month].forEach(r => {
-      const isWeekly = r.type === 'weekly';
-      const icon = isWeekly ? '📊' : '📋';
-      const iconClass = isWeekly ? 'icon-weekly' : 'icon-daily';
-      const typeLabel = isWeekly ? '周报' : '日报';
-      html += `
-      <div class="sidebar-item" id="nav-${r.id}" onclick="showReport('${r.id}')">
-        <div class="sidebar-item-icon ${iconClass}">${icon}</div>
-        <div class="sidebar-item-info">
-          <div class="sidebar-item-date">${r.date}</div>
-          <div class="sidebar-item-type">${typeLabel}</div>
+  Object.keys(groups).sort().reverse().forEach(m => {
+    html += `<div class="group-label">${m}</div>`;
+    groups[m].forEach(r => {
+      const isW = r.type === 'weekly';
+      html += `<div class="nav-item${r.id === current ? ' active' : ''}" id="nav-${r.id}" onclick="load('${r.id}','${r.path}')">
+        <div class="nav-icon ${isW ? 'icon-w' : 'icon-d'}">${isW ? '📊' : '📋'}</div>
+        <div class="nav-info">
+          <div class="nav-date">${r.date}</div>
+          <div class="nav-type">${isW ? '周报' : '日报'}</div>
         </div>
-        <div class="sidebar-item-dot"></div>
+        <div class="nav-dot"></div>
       </div>`;
     });
-    html += '</div>';
   });
-  container.innerHTML = html;
+  el.innerHTML = html;
 }
 
-function showReport(id) {
-  // 隐藏所有
-  document.querySelectorAll('.report-section').forEach(el => el.style.display = 'none');
-  document.querySelectorAll('.sidebar-item').forEach(el => el.classList.remove('active'));
-
-  // 显示目标
-  const section = document.getElementById('section-' + id);
-  if (section) {
-    section.style.display = 'block';
-    document.getElementById('main-content').scrollTop = 0;
-  }
-
-  const nav = document.getElementById('nav-' + id);
-  if (nav) nav.classList.add('active');
+function load(id, path) {
+  current = id;
+  document.getElementById('report-frame').src = path;
+  renderNav(lastList);
+  // scroll active into view
+  setTimeout(() => {
+    const el = document.getElementById('nav-' + id);
+    if (el) el.scrollIntoView({ block: 'nearest' });
+  }, 50);
 }
 
-function filterReports(query) {
-  const q = query.toLowerCase().trim();
-  const filtered = q ? REPORTS.filter(r =>
+let lastList = REPORTS;
+function filter(q) {
+  q = q.toLowerCase().trim();
+  lastList = q ? REPORTS.filter(r =>
     r.date.includes(q) ||
-    r.title.toLowerCase().includes(q) ||
-    r.type.includes(q) ||
     (q === '日报' && r.type === 'daily') ||
     (q === '周报' && r.type === 'weekly')
   ) : REPORTS;
-  renderSidebar(filtered);
-
-  // 激活第一个
-  if (filtered.length) {
-    setTimeout(() => showReport(filtered[0].id), 0);
+  renderNav(lastList);
+  if (lastList.length && !lastList.find(r => r.id === current)) {
+    load(lastList[0].id, lastList[0].path);
   }
 }
 
-// 初始化
-renderSidebar(REPORTS);
-if (REPORTS.length) {
-  showReport(REPORTS[0].id);
-}
+renderNav(REPORTS);
 </script>
 </body>
 </html>
