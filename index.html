@@ -81,7 +81,7 @@
   <div class="topbar-sub">Competitor Intelligence Hub</div>
   <div class="topbar-right">
     <span class="topbar-pill">AUTO</span>
-    最后构建：2026-05-29 18:07
+    最后构建：2026-06-02 18:07
   </div>
 </div>
 
@@ -104,7 +104,546 @@
   <!-- Main content -->
   <div class="main" id="main">
     
-<div id="panel-weekly_2026-05-29" class="report-panel" style="display:block"
+<div id="panel-daily_2026-06-02" class="report-panel" style="display:block"
+     data-styles="{}" data-id="daily_2026-06-02">
+</div>
+<script>
+(function(){
+  var host = document.getElementById('panel-daily_2026-06-02');
+  var shadow = host.attachShadow({mode:'open'});
+  shadow.innerHTML = `<style>
+    :host { display:block; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #f0f2f8;
+    color: #1a1d2e;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .report-header {
+    background: linear-gradient(135deg, #5c4fff 0%, #8b6fff 50%, #b084ff 100%);
+    padding: 48px 40px 40px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .report-header::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 300px; height: 300px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 50%;
+  }
+  .report-header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: 40%;
+    width: 200px; height: 200px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 50%;
+  }
+  .header-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+  .report-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .report-title {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+  .report-meta {
+    font-size: 14px;
+    opacity: 0.85;
+    font-weight: 400;
+  }
+  .report-meta span { 
+    display: inline-block; 
+    margin-right: 20px; 
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 32px 20px 60px; }
+
+  /* Summary bar */
+  .summary-bar {
+    background: #fff;
+    border-radius: 12px;
+    padding: 18px 24px;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    box-shadow: 0 2px 8px rgba(92,79,255,0.07);
+    flex-wrap: wrap;
+  }
+  .summary-stat { text-align: center; min-width: 80px; }
+  .summary-stat .num { font-size: 24px; font-weight: 700; color: #5c4fff; }
+  .summary-stat .label { font-size: 11px; color: #777; margin-top: 2px; }
+  .summary-divider { width: 1px; height: 36px; background: #eee; }
+
+  /* Competitor cards */
+  .comp-section {
+    background: #fff;
+    border-radius: 14px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    transition: box-shadow 0.2s;
+  }
+  .comp-section:hover { box-shadow: 0 4px 20px rgba(92,79,255,0.12); }
+  .comp-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 24px;
+    border-bottom: 1px solid #f0f2f8;
+    flex-wrap: wrap;
+  }
+  .comp-logo {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .comp-info { flex: 1; }
+  .comp-name { font-size: 16px; font-weight: 700; color: #1a1d2e; }
+  .comp-cat {
+    font-size: 11px;
+    color: #888;
+    margin-top: 2px;
+  }
+  .source-tag {
+    display: inline-block;
+    background: #f0f2f8;
+    color: #5c4fff;
+    border-radius: 6px;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .update-count {
+    background: #5c4fff;
+    color: #fff;
+    border-radius: 20px;
+    padding: 3px 11px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .comp-body { padding: 20px 24px; }
+  .update-item {
+    display: flex;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #f5f6fb;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+  .update-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .update-icon { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+  .update-text { color: #333; }
+  .update-text strong { color: #1a1d2e; }
+  .highlight {
+    background: linear-gradient(90deg, #fff8e1, #fff3cd);
+    border-left: 3px solid #f5a623;
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px 10px 12px;
+    margin: 4px 0;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #7a5a00;
+  }
+  .highlight-row {
+    background: linear-gradient(90deg, #fff8e1, #fff3cd);
+    border-left: 3px solid #f5a623;
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px 10px 12px;
+    margin: 4px 0;
+  }
+  .shutdown-badge {
+    display: inline-block;
+    background: #f0f0f0;
+    color: #888;
+    border-radius: 6px;
+    padding: 2px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-left: 8px;
+  }
+
+  /* Trend box */
+  .trend-box {
+    background: linear-gradient(135deg, #f0eeff, #e8eeff);
+    border: 1px solid #d4ccff;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+  }
+  .trend-box h3 { font-size: 14px; font-weight: 700; color: #5c4fff; margin-bottom: 10px; }
+  .trend-list { list-style: none; }
+  .trend-list li {
+    font-size: 13.5px;
+    color: #444;
+    padding: 5px 0;
+    display: flex;
+    gap: 8px;
+  }
+  .trend-list li::before { content: '→'; color: #5c4fff; font-weight: 700; flex-shrink: 0; }
+
+  /* Action section */
+  .action-section {
+    background: linear-gradient(135deg, #1a1d2e, #2d2450);
+    border-radius: 14px;
+    padding: 28px 28px 24px;
+    margin-top: 28px;
+    color: #fff;
+  }
+  .action-section h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .action-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .action-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .action-num {
+    width: 28px; height: 28px;
+    background: #5c4fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .action-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.88);
+  }
+  .action-text strong { color: #fff; }
+
+  /* Footer */
+  .report-footer {
+    text-align: center;
+    padding: 24px 0 0;
+    font-size: 12px;
+    color: #aaa;
+  }
+  .report-footer a { color: #5c4fff; text-decoration: none; }
+
+  /* Colors per brand */
+  .logo-typeform { background: #262627; }
+  .logo-asknicely { background: #00c4b4; }
+  .logo-survicate { background: #ff5f5f; }
+  .logo-hotjar { background: #fd3a5c; }
+  .logo-surveymonkey { background: #00bf6f; }
+  .logo-qualtrics { background: #1160b7; }
+
+  .section-header {
+    font-size: 13px;
+    font-weight: 700;
+    color: #5c4fff;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e8eaff;
+  }
+
+  </style>
+  <div class="report-root"><div class="report-header">
+  <div class="header-inner">
+    <div class="report-badge">📊 每日竞品情报</div>
+    <div class="report-title">竞品功能更新日报</div>
+    <div class="report-meta">
+      <span>📅 2026年06月02日 (周二)</span>
+      <span>🎯 产品：Insightto</span>
+      <span>🔍 监控竞品：6个</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Summary bar -->
+  <div class="summary-bar">
+    <div class="summary-stat">
+      <div class="num">6</div>
+      <div class="label">监控竞品</div>
+    </div>
+    <div class="summary-divider"></div>
+    <div class="summary-stat">
+      <div class="num">18</div>
+      <div class="label">功能更新</div>
+    </div>
+    <div class="summary-divider"></div>
+    <div class="summary-stat">
+      <div class="num">7</div>
+      <div class="label">⚡ 直接相关</div>
+    </div>
+    <div class="summary-divider"></div>
+    <div class="summary-stat">
+      <div class="num">AI</div>
+      <div class="label">核心趋势</div>
+    </div>
+  </div>
+
+  <!-- Industry Trends -->
+  <div class="trend-box">
+    <h3>🌐 行业趋势 — 本期关键信号</h3>
+    <ul class="trend-list">
+      <li><strong>AI 全面落地：</strong>所有主要竞品在 2026 Q1–Q2 均完成或正在推进 AI 分析能力内嵌，AI 已从"加分项"变成"基础功能"门槛</li>
+      <li><strong>反馈闭环加速：</strong>AskNicely Recovery Survey 和 Qualtrics Experience Agents 代表"收集→分析→行动"全链路自动化趋势</li>
+      <li><strong>声誉管理整合：</strong>AskNicely 将 NPS + 线上评论管理整合，显示 B2B Feedback 正在向"品牌声誉一体化"演进</li>
+      <li><strong>多渠道数据整合：</strong>Qualtrics、SurveyMonkey、Hotjar 均在加强全渠道数据聚合，单点工具价值被稀释</li>
+    </ul>
+  </div>
+
+  <div class="section-header">竞品动态详情</div>
+
+  <!-- 1. Typeform -->
+  <div class="comp-section">
+    <div class="comp-header">
+      <div class="comp-logo logo-typeform">T</div>
+      <div class="comp-info">
+        <div class="comp-name">Typeform</div>
+        <div class="comp-cat">表单 & 问卷 / Lead Generation</div>
+      </div>
+      <div class="source-tag">PR Newswire · 2026-02-04</div>
+      <div class="update-count">3 更新</div>
+    </div>
+    <div class="comp-body">
+      <div class="update-item">
+        <div class="update-icon">🤖</div>
+        <div class="update-text"><strong>AI 数据增强（Winter '26）</strong>：表单提交瞬间自动丰富联系人信息，B2B 匹配率高达 92%，B2C 71%。采用"代理瀑布式增强"技术，跨多个数据源自动搜索验证</div>
+      </div>
+      <div class="highlight-row">
+        <div class="update-item" style="padding:0;border:none;">
+          <div class="update-icon">⚡</div>
+          <div class="update-text"><strong>Typeform AI Memory（AI 记忆功能）</strong>：团队可构建可自定义知识库，存储公司信息、品牌偏好等上下文，AI 基于此为每个业务量身定制工作流。<span style="color:#b57700;">→ Insightto 可考虑类似「品牌 AI 上下文记忆」，让 AI 分析结果更贴合商家品牌语言</span></div>
+        </div>
+      </div>
+      <div class="highlight-row">
+        <div class="update-item" style="padding:0;border:none;">
+          <div class="update-icon">⚡</div>
+          <div class="update-text"><strong>动态报告仪表板 + 自动路由</strong>：跨受众群体对比趋势，新回应自动分配给对应负责人。<span style="color:#b57700;">→ 与 Insightto CRM 反馈管理方向直接竞争，需关注 Typeform 是否向 NPS/CX 领域延伸</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. AskNicely -->
+  <div class="comp-section">
+    <div class="comp-header">
+      <div class="comp-logo logo-asknicely">A</div>
+      <div class="comp-info">
+        <div class="comp-name">AskNicely</div>
+        <div class="comp-cat">NPS & CX Feedback / 服务型企业</div>
+      </div>
+      <div class="source-tag">官方博客 · 2026-05-06 / 2026-05-11</div>
+      <div class="update-count">4 更新</div>
+    </div>
+    <div class="comp-body">
+      <div class="highlight-row">
+        <div class="update-item" style="padding:0;border:none;">
+          <div class="update-icon">⚡</div>
+          <div class="update-text"><strong>Ask NiceAI®（2026 Q1 最重大发布）</strong>：产品内嵌 AI 对话查询，自然语言询问客户反馈数据，即时可视化 NPS 趋势、客户流失驱动因素，支持 AI 代理编排执行任务。<span style="color:#b57700;">→ 与 Insightto AI 分析功能高度重叠，且对话式交互门槛更低，需密切跟进</span></div>
+        </div>
+      </div>
+      <div class="highlight-row">
+        <div class="update-item" style="padding:0;border:none;">
+          <div class="update-icon">⚡</div>
+          <div class="update-text"><strong>Recovery Survey（恢复调查）</strong>：问题解决后重新向客户发送问卷，新评分覆盖初始分值，并提供"挽回率%"等专项报告。<span style="color:#b57700;">→ Insightto 目前无此功能，对于 Shopify 商家处理差评回访场景有明显价值</span></div>
+        </div>
+      </div>
+      <div class="update-item">
+        <div class="update-icon">📊</div>
+        <div class="update-text"><strong>Survey Report（问卷专项报告）</strong>：针对单一问卷模板提供全生命周期分析，含流失点识别、逐题结果、完成率追踪。支持分段过滤</div>
+      </div>
+      <div class="update-item">
+        <div class="update-icon">⭐</div>
+        <div class="update-text"><strong>Reputation Manager（声誉管理器）</strong>：2026年4月28日新发布——整合内部调查与 Google/社交媒体评论管理，支持批量回复、本地 SEO 提升、AI 门店级问题定位。首周数据：正面评论可降低客户获取成本 18%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Survicate -->
+  <div class="comp-section">
+    <div class="comp-header">
+      <div class="comp-logo logo-survicate">S</div>
+      <div class="comp-info">
+        <div class="comp-name">Survicate</div>
+        <div class="comp-cat">客户调研 / In-App Survey / NPS</div>
+      </div>
+      <div class="source-tag">cx.tools · 2026-03-23</div>
+      <div class="update-count">2 更新</div>
+    </div>
+    <div class="comp-body">
+      <div class="update-item">
+        <div class="update-icon">📋</div>
+        <div class="update-text"><strong>AI Research Assistant</strong>：提供跟进问题智能生成、文本自动分类功能，专门面向产品经理使用 in-app 调研、邮件 NPS 及购后调查场景</div>
+      </div>
+      <div class="update-item">
+        <div class="update-icon">🔗</div>
+        <div class="update-text"><strong>加入 cx.tools 目录（2026-03）</strong>：Survicate 提升其在 CX 工具栈中的曝光，定位为"轻量化调研工具"参与市场整合</div>
+      </div>
+      <div style="margin-top:10px; padding:10px 12px; background:#f8f9fc; border-radius:8px; font-size:13px; color:#888;">
+        ℹ️ 本期搜索结果主要为综述性内容，未发现 2026年5–6月的重大新功能发布公告，动态相对平稳
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Hotjar -->
+  <div class="comp-section">
+    <div class="comp-header">
+      <div class="comp-logo logo-hotjar">H</div>
+      <div class="comp-info">
+        <div class="comp-name">Hotjar</div>
+        <div class="comp-cat">行为分析 / 用户录屏 / 反馈 & 问卷</div>
+      </div>
+      <div class="source-tag">iatools.ai · 2026-05</div>
+      <div class="update-count">4 更新</div>
+    </div>
+    <div class="comp-body">
+      <div class="update-item">
+        <div class="update-icon">🔥</div>
+        <div class="update-text"><strong>预测性热力图（Predictive Heatmaps）</strong>：基于历史数据 + ML 预测新页面发布前的点击热区，准确率 85–92%，帮助 CRO 团队在 A/B 测试前减少猜测</div>
+      </div>
+      <div class="update-item">
+        <div class="update-icon">🤖</div>
+        <div class="update-text"><strong>自动会话标记（Automated Session Tagging）</strong>：AI 自动分类数千条录屏，识别愤怒点击、犹豫停顿、转化行为等模式</div>
+      </div>
+      <div class="highlight-row">
+        <div class="update-item" style="padding:0;border:none;">
+          <div class="update-icon">⚡</div>
+          <div class="update-text"><strong>情感感知反馈分析（Sentiment-Aware Feedback Analysis）</strong>：NLP 自动识别开放式问卷回答的情感倾向和新兴主题。<span style="color:#b57700;">→ 与 Insightto AI 分析重叠；Hotjar 优势在于结合行为数据，Insightto 需强化"从反馈到行动"的闭环叙事</span></div>
+        </div>
+      </div>
+      <div class="update-item">
+        <div class="update-icon">🔒</div>
+        <div class="update-text"><strong>隐私合规升级</strong>：自动 PII 检测与遮蔽，符合 2026 年全球数据保护标准（GDPS），区域化数据处理控制</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. SurveyMonkey -->
+  <div class="comp-section">
+    <div class="comp-header">
+      <div class="comp-logo logo-surveymonkey">SM</div>
+      <div class="comp-info">
+        <div class="comp-name">SurveyMonkey</div>
+        <div class="comp-cat">在线问卷 / 市场调研 / AI 分析</div>
+      </div>
+      <div class="source-tag">官方更新日志 · 2026 Q1</div>
+      <div class="update-count">5 更新</div>
+    </div>
+    <div class="comp-body">
+      <div class="update-item">
+        <div class="update-icon">📝</div>
+        <div class="update-text"><strong>主题分析摘要（Thematic Analysis Summary）</strong>：自然语言段落自动总结开放式问题的核心主题与情感倾向，无需逐条阅读</div>
+      </div>
+      <div class="update-item">
+        <div class="update-icon">🤖</div>
+        <div class="update-text"><strong>AI 工具中心（AI Tools Hub）</strong>：2026年3月正式上线，免费用户可使用 AI 生成问卷，国际化版本已于4月向全球开放</div>
+      </div>
+      <div class="update-item">
+        <div class="update-icon">📊</div>
+        <div class="update-text"><strong>Analyze with AI 模型升级</strong>：直接处理原始文本，并支持情感分析 + 回答质量过滤默认开启，零配置即可获取高质量洞察</div>
+      </div>
+      <div class="update-item">
+        <div class="update-icon">🔗</div>
+        <div class="update-text"><strong>Google Sheets 历史数据回填</strong>：连接前收集的历史回答可同步至 Sheets，与实时数据合并展示</div>
+      </div>
+      <div class="update-item">
+        <div class="update-icon">⚡</div>
+        <div class="update-text"><strong>一键发布 + 简化构建界面</strong>：点击 Publish 按钮即刻生成可分享链接，大幅缩短从创建到收集的时间</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Qualtrics -->
+  <div class="comp-section">
+    <div class="comp-header">
+      <div class="comp-logo logo-qualtrics">Q</div>
+      <div class="comp-info">
+        <div class="comp-name">Qualtrics</div>
+        <div class="comp-cat">企业级 CX / 体验管理平台</div>
+      </div>
+      <div class="source-tag">X4 2026 大会 · 2026-03-18</div>
+      <div class="update-count">5 更新</div>
+    </div>
+    <div class="comp-body">
+      <div class="update-item">
+        <div class="update-icon">🌐</div>
+        <div class="update-text"><strong>全渠道体验管理</strong>：整合调查 + 联络中心 + 数字互动 + 社交媒体，新增 Genesys / NICE / Salesforce 连接器，部署速度提升 4 倍</div>
+      </div>
+      <div class="update-item">
+        <div class="update-icon">⚡</div>
+        <div class="update-text"><strong>自动化文本分析</strong>：AI 数小时内完成原本需数周的话题分类，具确定性与可审计性，真实案例：数据分类从 2 周压缩至 1 小时</div>
+      </div>
+      <div class="highlight-row">
+        <div class="update-item" style="padding:0;border:none;">
+          <div class="update-icon">⚡</div>
+          <div class="update-text"><strong>AI 体验智能体（Experience Agents™）</strong>：在服务后调查中 AI 实时介入，自主解决客户问题，TruGreen 实测首周处理 51% 投诉、升级率降低 30%+。<span style="color:#b57700;">→ 这是"调查→即时行动"的最先进形态，Insightto 目前无此能力；可作为长期产品路线图方向</span></div>
+        </div>
+      </div>
+      <div class="update-item">
+        <div class="update-icon">🏪</div>
+        <div class="update-text"><strong>竞争对手评论分析</strong>：持续对比附近竞品评论，帮助门店管理者识别竞品优势并针对性改善体验</div>
+      </div>
+      <div class="update-item">
+        <div class="update-icon">🔍</div>
+        <div class="update-text"><strong>合成受众 / Synthetic Panels</strong>：X4 2026 重点发布，用 AI 合成受众补充传统调研样本不足，Forrester 评为 2026 年差异化亮点</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Action Section -->
+  <div class="action-section">
+    <h3>📌 对 Insightto 的行动建议</h3>
+    <div class="action-item">
+      <div class="action-num">1</div>
+      <div class="action-text"><strong>立即跟进：Recovery Survey（回访调查）功能</strong>。AskNicely 已上线"问题解决后重新调查"机制，并配套"挽回率"指标。对 Shopify 商家处理差评复购场景极有价值——建议 Insightto 将此列入近期产品排期，可作为 NPS 功能的差异化延伸，形成"发现差评→解决问题→验证结果"完整闭环。</div>
+    </div>
+    <div class="action-item">
+      <div class="action-num">2</div>
+      <div class="action-text"><strong>强化 AI 分析的"对话式"入口</strong>。AskNicely Ask NiceAI® 和 Typeform AI Memory 均在以更低门槛的自然语言交互包装 AI 洞察能力。Insightto 现有 AI 分析如果仅为"一键生成报告"，将被迅速追平——建议增加自然语言查询入口（如"上周哪类问题最多？"），让商家无需看报告也能获取洞察，提升日活粘性。</div>
+    </div>
+    <div class="action-item">
+      <div class="action-num">3</div>
+      <div class="action-text"><strong>Shopify 生态差异化：主打"购后 NPS + Exit Survey 闭环"，强调与 Shopify 数据的深度整合</strong>。Typeform / SurveyMonkey / Qualtrics 均为通用工具，其 Shopify 集成深度有限。Insightto 应将"Shopify 原生数据驱动触发"（订单完成、退款申请、会员流失等事件触发问卷）作为核心卖点对外宣传，以场景化叙事抵御大厂竞争。</div>
+    </div>
+  </div>
+
+  <div class="report-footer">
+    <p>Insightto 竞品情报中心 &nbsp;|&nbsp; <a href="https://lixin970830-cell.github.io/insightto-competitor-intel/">在线查看</a> &nbsp;|&nbsp; 自动生成于 2026-06-02 18:00</p>
+  </div>
+
+</div></div>`;
+})();
+</script>
+<div id="panel-weekly_2026-05-29" class="report-panel" style="display:none"
      data-styles="{}" data-id="weekly_2026-05-29">
 </div>
 <script>
@@ -665,7 +1204,7 @@
 </div>
 
 <script>
-const REPORTS = [{"id": "weekly_2026-05-29", "date": "2026-05-29", "type": "weekly"}, {"id": "daily_2026-05-28", "date": "2026-05-28", "type": "daily"}];
+const REPORTS = [{"id": "daily_2026-06-02", "date": "2026-06-02", "type": "daily"}, {"id": "weekly_2026-05-29", "date": "2026-05-29", "type": "weekly"}, {"id": "daily_2026-05-28", "date": "2026-05-28", "type": "daily"}];
 let currentId = REPORTS.length ? REPORTS[0].id : null;
 let filteredList = REPORTS;
 
