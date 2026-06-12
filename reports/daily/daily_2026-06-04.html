@@ -6,43 +6,106 @@
 <title>Insightto 竞品日报 — 2026-06-04</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Inter',-apple-system,sans-serif;background:#f0f2f8;color:#1e1e2e;padding:32px 16px;line-height:1.75}
-  .container{max-width:880px;margin:0 auto}
-  .header{background:linear-gradient(135deg,#5c4fff 0%,#7c3aed 100%);border-radius:16px;padding:32px 36px;color:white;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between}
-  .header h1{font-size:22px;font-weight:700;margin-bottom:6px}
-  .header .meta{font-size:13px;opacity:.8}
-  .badge{background:#2563eb;border:2px solid rgba(255,255,255,.3);color:white;font-size:11px;font-weight:700;letter-spacing:1.5px;padding:6px 14px;border-radius:20px;white-space:nowrap}
-  .card{background:white;border-radius:12px;padding:28px 32px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
-  h1{font-size:20px;font-weight:700;color:#1e1e2e;margin-bottom:12px}
-  h2{font-size:16px;font-weight:600;color:#5c4fff;margin:24px 0 10px;padding-bottom:8px;border-bottom:2px solid #ede9fe}
-  h3{font-size:14px;font-weight:600;color:#374151;margin:14px 0 6px}
-  p{margin-bottom:10px;font-size:14px;color:#374151}
-  li{font-size:14px;color:#374151;margin-left:20px;margin-bottom:5px}
-  strong{color:#1e1e2e}
-  .highlight{background:#fef3c7;border-radius:4px;padding:1px 6px;font-size:13px;color:#92400e;font-weight:500}
-  blockquote{background:#fef3c7;border-left:3px solid #f59e0b;padding:10px 16px;border-radius:0 8px 8px 0;font-size:13px;color:#92400e;margin:12px 0}
-  hr{border:none;border-top:1px solid #e8e8f0;margin:20px 0}
-  .footer{text-align:center;font-size:12px;color:#9ca3af;margin-top:24px}
-  .generated-by{display:inline-flex;align-items:center;gap:6px;background:white;border-radius:20px;padding:6px 14px;font-size:12px;color:#6b7280;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f0f2f8; color: #1a1a2e; min-height: 100vh; }
+  .report-header { background: linear-gradient(135deg, #5c4fff 0%, #8b5cf6 50%, #a855f7 100%); padding: 46px 40px 38px; text-align: center; position: relative; overflow: hidden; }
+  .report-header::before { content: ''; position: absolute; inset: -50%; background: radial-gradient(ellipse at center, rgba(255,255,255,0.08) 0%, transparent 60%); pointer-events: none; }
+  .report-title { font-size: 28px; font-weight: 700; color: #fff; letter-spacing: -0.5px; margin-bottom: 8px; position: relative; }
+  .report-meta { font-size: 14px; color: rgba(255,255,255,0.82); position: relative; }
+  .report-meta strong { color: #fff; font-weight: 700; }
+  .container { max-width: 900px; margin: 0 auto; padding: 32px 20px 60px; }
+  .trend-box { background: linear-gradient(135deg, #ede9fe, #e0e7ff); border: 1px solid #c4b5fd; border-radius: 14px; padding: 20px 24px; margin-bottom: 24px; }
+  .trend-box h3 { font-size: 14px; font-weight: 700; color: #5c4fff; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 12px; }
+  .trend-box ul { list-style: none; padding: 0; }
+  .trend-box li { font-size: 14px; color: #374151; padding: 5px 0 5px 20px; position: relative; line-height: 1.65; }
+  .trend-box li::before { content: '▸'; position: absolute; left: 0; color: #7c3aed; font-size: 12px; top: 6px; }
+  .note-box { background: #fffbeb; border-left: 3px solid #f59e0b; border-radius: 0 10px 10px 0; padding: 12px 16px; color: #78350f; font-size: 13px; line-height: 1.65; margin-bottom: 24px; }
+  .section-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: #6b7280; margin: 30px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #e5e7eb; }
+  .comp-section { background: #fff; border-radius: 14px; border: 1px solid #e5e7eb; margin-bottom: 16px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+  .comp-header { display: flex; align-items: center; gap: 12px; padding: 18px 22px; border-bottom: 1px solid #f3f4f6; background: #fafafa; flex-wrap: wrap; }
+  .comp-name { font-size: 16px; font-weight: 700; color: #1a1a2e; }
+  .comp-cat { font-size: 11px; font-weight: 600; color: #5c4fff; background: #ede9fe; border-radius: 6px; padding: 2px 8px; text-transform: uppercase; letter-spacing: 0.6px; }
+  .comp-cat.shopify { color: #059669; background: #d1fae5; }
+  .source-tag { margin-left: auto; font-size: 11px; color: #9ca3af; background: #f3f4f6; border-radius: 6px; padding: 2px 8px; }
+  .comp-body { padding: 16px 22px; }
+  .update-item { font-size: 14px; color: #374151; padding: 7px 0 7px 20px; position: relative; border-bottom: 1px solid #f9fafb; line-height: 1.65; }
+  .update-item:last-child { border-bottom: none; }
+  .update-item::before { content: '•'; position: absolute; left: 6px; color: #d1d5db; font-size: 16px; top: 6px; }
+  .date-tag { display: inline-block; font-size: 11px; font-weight: 600; color: #6b7280; background: #f3f4f6; border-radius: 4px; padding: 1px 6px; margin-right: 6px; }
+  .highlight { font-size: 14px; color: #374151; padding: 9px 12px 9px 22px; position: relative; background: linear-gradient(90deg, #fffbeb 0%, #fff 100%); line-height: 1.65; border-left: 3px solid #f59e0b; margin: 6px 0; border-radius: 0 8px 8px 0; }
+  .highlight::before { content: '⚡'; position: absolute; left: 5px; top: 9px; font-size: 12px; }
+  .action-section { background: linear-gradient(135deg, #1a1a2e 0%, #2d2b69 100%); border-radius: 14px; padding: 24px 28px; margin-top: 30px; }
+  .action-section h3 { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 18px; }
+  .action-item { display: flex; align-items: flex-start; gap: 14px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .action-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .action-num { flex-shrink: 0; width: 26px; height: 26px; background: #5c4fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #fff; margin-top: 1px; }
+  .action-text { font-size: 14px; color: rgba(255,255,255,0.88); line-height: 1.65; }
+  .action-text strong { color: #c4b5fd; }
+  footer { text-align: center; padding: 24px 0 8px; font-size: 12px; color: #9ca3af; }
+  footer a { color: #5c4fff; text-decoration: none; }
 </style>
 </head>
 <body>
+<div class="report-header">
+  <div class="report-title">Insightto 竞品情报日报</div>
+  <div class="report-meta"><strong>2026-06-04</strong> · 监控 13 家竞品 · 重点：AI Agent / Shopify 原生竞品 / Delighted 迁移</div>
+</div>
 <div class="container">
-  <div class="header">
-    <div>
-      <div class="meta">Insightto · 竞品情报系统</div>
-      <h1>Insightto 竞品日报 — 2026-06-04</h1>
-      <div class="meta">生成时间：2026-06-12 15:48</div>
+  <div class="trend-box">
+    <h3>📡 今日行业趋势</h3>
+    <ul>
+      <li>AskNicely 的 Insights Agent + Response Agent 已把 NPS 工具推向“自动推送洞察 + 自动处理评论”的阶段，Insightto 不能只停留在静态 AI 分析。</li>
+      <li><strong>Shopify 原生竞品的分工更清晰：</strong>Zigpoll 做全场景调查，Fairing 做购后归因，Grapevine 用 $25/月无限响应吸引价格敏感商家。</li>
+      <li>Delighted 停服已进入最后窗口期，迁移用户更关心数据导入、问卷重建和团队交接，而不只是功能对比。</li>
+    </ul>
+  </div>
+  <div class="note-box"><strong>补档说明：</strong>本报告按之前日报格式重写，基于 6月2日、6月3日已确认竞品动态及 6月12日回补时可验证的公开来源整理；不再把同一批网页摘录机械套到每天。</div>
+  <div class="section-label">通用 Survey / NPS 竞品</div>
+
+  <div class="comp-section">
+    <div class="comp-header">
+      <span class="comp-name">AskNicely</span>
+      <span class="comp-cat">NPS / CX Platform</span>
+      <span class="source-tag">CustomerThink / CMSWire · 6月2日发布</span>
     </div>
-    <div class="badge">DAILY</div>
+    <div class="comp-body">
+      <div class="highlight">Insights Agent 自动扫描问卷、评论和运营反馈，并按日报/周报/月报推送至 Email、Slack、Teams。对小团队最有杀伤力的是：商家不需要主动打开后台也能收到可执行摘要。</div>
+      <div class="highlight">Response Agent 自动起草和回复 Google 评论，尤其适合多门店服务业。它把 NPS、评论管理、声誉维护合在一个闭环里。</div>
+      <div class="update-item">Insightto 的直接应对方向：先做轻量版“AI Weekly Digest”，每周自动总结 NPS 变化、负面关键词、建议动作，通过邮件发给 Shopify 店主。</div>
+    </div>
   </div>
-  <div class="card">
-    <p><h1>Insightto 竞品日报 — 2026-06-04</h1></p><p><blockquote>自动抓取公开来源，按 Insightto 相关性整理</blockquote></p><p><br><h2>Shopify 原生竞品</h2></p><p><h3>Zigpoll (Shopify 原生 NPS / Survey)</h3><br><strong>备注</strong>: Delighted 关闭后重要承接竞品，Shopify 生态直接竞品<br><strong>来源</strong>: app_store (cached): https://apps.shopify.com/zigpoll | blog (cached): https://www.zigpoll.com/blog<br><li><strong>app_store (cached)</strong>: Zigpoll Customer Surveys - Post-purchase &amp; on-site surveys for attribution, NPS, &amp; more | Shopify App Store Apps by category Finding products Selling products Orders and shipping Marketing and conversion Store management BFS: Your shortcut to quality apps 2025 Shopify Build Awards Zigpoll Customer Surveys Free plan available Free plan available Popular with stores like yours Based in United States Featured im...</li><br><li><strong>blog (cached)</strong>: Zigpoll Blog - Polls, Surveys, Feedback, and Inbound Marketing Let's grow your business. Stay on top of what's happening at Zigpoll HQ and learn how to get the most out of your surveys and first party data. Announcing The Zigpoll Theme Embed Future-Proof Your Themes With Our Shopify Theme Embed GAÂLA Paris Case Study. Luxury fashion brand GAÂLA saw 6% conversion rates on Zigpoll exit intent surveys Yay& 39;s Snacks C...</li></p><p><h3>Fairing (Shopify 原生购后调研)</h3><br><strong>备注</strong>: 专注购后调研和归因，与 Insightto Exit Survey 场景直接重叠<br><strong>来源</strong>: app_store (cached): https://apps.shopify.com/fairing | blog (cached): https://www.fairing.co/blog<br><li><strong>app_store (cached)</strong>: Fairing Post Purchase Surveys - Post-purchase surveys, AI insights, NPS, and more. | Shopify App Store Apps by category Finding products Selling products Orders and shipping Marketing and conversion Store management BFS: Your shortcut to quality apps 2025 Shopify Build Awards Fairing Post Purchase Surveys Free plan available. Free trial available. Free plan available Popular with stores like yours Based in United Sta...</li><br><li><strong>blog (cached)</strong>: Fairing Data Now Lives in Shopify Analytics Introducing: Bulk Recategorization, Turn "Other" Into Attribution Signal Will McGivern-Smith Joins Fairing as SVP of Strategic Partnerships How to Migrate Your NPS Surveys from Delighted to Fairing Extrapolating Attribution Survey Responses and Channel Revenue From Partial Response Rates Meet the Next Evolution of Fairing NPS for Shopify Our Mission for Ubiquity: Introducin...</li></p><p><h3>Grapevine Surveys (Shopify 原生 NPS / Survey)</h3><br><strong>备注</strong>: Shopify 专注 NPS 工具，与 Insightto 定位最为接近<br><strong>来源</strong>: app_store (cached): https://apps.shopify.com/grapevine | website (cached): https://grapevine-surveys.com/<br><li><strong>app_store (cached)</strong>: Grapevine Post Purchase Survey - Post purchase &amp; email surveys for attribution, NPS and more | Shopify App Store Apps by category Finding products Selling products Orders and shipping Marketing and conversion Store management BFS: Your shortcut to quality apps 2025 Shopify Build Awards Grapevine Post Purchase Survey popover-modal close click- popover-modal nop:stop resize@window-&gt;popover-modal close" class="tw...</li><br><li><strong>website (cached)</strong>: Shopify Post-Purchase Survey App – Unlimited Responses, $25/mo | Grape &ndash; Grapevine Surveys for Shopify United Kingdom | Item added to your cart Continue shopping Post-Purchase & Customer Insight Surveys for Shopify Grapevine Surveys is a Shopify survey app for running post-purchase surveys, NPS, CSAT, and customer feedback surveys without limits. Collect reliable customer insights directly after checkout, under...</li></p><p><h2>Delighted 承接 / 替代</h2></p><p><h3>Delighted (NPS / CSAT / CES)</h3><br><strong>状态</strong>: Qualtrics 收购后停止运营，续费截止 2026年6月<br><strong>来源</strong>: blog (cached): https://delighted.com/blog<br><li><strong>blog (cached)</strong>: Delighted blog I Self-serve guides, survey design tips, and more. Customer Experience Customer Service Delighted helps the world& 039;s most coveted brands Survey Templates Net Promoter Score Customer Satisfaction Score Customer Effort Score Product Market Fit See all survey templates Not sure where to start? Learn more about each survey template. See all survey templates Practical advice from the experts Get support...</li></p><p><h3>Birdeye (声誉管理 / NPS / 多门店反馈)</h3><br><strong>备注</strong>: AskNicely 同类竞品，已承接部分 Delighted 企业用户<br><strong>来源</strong>: product_news (cached): https://birdeye.com/press/ | blog (cached): https://birdeye.com/blog/<br><li><strong>product_news (cached)</strong>: Birdeye Press &amp; News Coverage | Download Media Kit | Birdeye Check My AI Visibility WATCH DEMO Check My AI Visibility Marketing Automation NEW See all Birdeye Products Google Partnership Financial Services Property Management Birdeye View NEW Scan Your Brand NEW Social Media Tools Customer stories Birdeye View Awardees Advocacy Program Google for local business Review Management Business Listing Management Online...</li><br><li><strong>blog (cached)</strong>: Birdeye reputation management and customer happiness blog | Birdeye Try Social for free WATCH DEMO Try Social for free See all Birdeye Products Google Partnership Financial Services Property Management Birdeye View NEW Scan Your Brand NEW Social Media Tools Customer stories Birdeye View Awardees Advocacy Program Google for local business Review Management Business Listing Management Online Reputation Management Revie...</li></p><p><h3>SmartSurvey (轻量 NPS / Survey 工具)</h3><br><strong>备注</strong>: 日报 2026-05-28 中明确为 Delighted 主要迁移目标之一<br><strong>来源</strong>: blog (cached): https://www.smartsurvey.co.uk/blog<br><li><strong>blog (cached)</strong>: Blog - SmartSurvey Get up to speed with the latest insights and news from SmartSurvey. Latest blog post May 15, 2026 UK Public Consultation: Best Practice Discover best practices for UK public consultations, from legal frameworks and stakeholder engagement to effective survey design and data compliance. May 15, 2026 What Is Public Consultation? Learn about the importance of public consultation, how it enhances citize...</li></p><p><h2>通用 Survey / NPS</h2></p><p><h3>Typeform (Survey / Form Builder)</h3><br><strong>来源</strong>: product_updates (cached): https://www.typeform.com/whats-new | blog (cached): https://www.typeform.com/blog/<br><li><strong>product_updates (cached)</strong>: What& x27;s New - Typeform Skip to main content Explore what’s new at Typeform Stay in the loop with our latest product releases and feature updates Start the year strong with better data quality, fewer tools, and AI that works alongside you. Convert leads faster with AI Data Enrichment, automate key workflows with Contacts &amp; Automations, and build forms instantly with Typeform AI. Boost business growth automatic...</li><br><li><strong>blog (cached)</strong>: Typeform blog | Insights and tips on online forms and surveys Skip to main content Typeform can do what? Meet Growth Flow and Research Flow Forms are no longer the finish line—they& x27;re the trigger. Meet Growth Flow and Research Flow, the two new Typeform products turning every submission into automated flows that ignite growth. Typeform drives a new era of customer engagement with Growth Flow, where every form re...</li></p><p><h3>AskNicely (NPS / Customer Feedback)</h3><br><strong>来源</strong>: blog (cached): https://www.asknicely.com/blog<br><li><strong>blog (cached)</strong>: Customer Experience Resource Hub Customers Pricing Customer experience resources and guides We’ve got everything you’ll need to improve the customer experience - whether you’re a pro or just getting started. UX review presentations How do you create compelling presentations that wow your colleagues and impress your managers? Migrating to Linear 101 Linear helps streamline software projects, sprints, tasks, and bug tr...</li></p><p><h3>Survicate (Survey / NPS / In-product)</h3><br><strong>来源</strong>: changelog (cached): https://changelog.survicate.com/ | blog (cached): https://survicate.com/blog/<br><li><strong>changelog (cached)</strong>: Survicate changelog Introducing Research Hub Research Hub is now live for all paid plans. If you've been using Insights Hub, you'll notice it's been drastically improved and upgraded. Research Hub is a structured space for running project-based research across all your feedback sources. You connect surveys , support tickets , call transcripts , app reviews , and more , then run focused research projects that generate...</li><br><li><strong>blog (cached)</strong>: The Survicate Blog What AI Gets Wrong About User Research - And How Experts Fix It Why is AI bad for user research? Raw LLMs flatten nuance and miss critical signals. Learn how to fix your research workflow for trustworthy insights. Daniel Korczyński All reset search reset cat Product Research Website Feedback Customer Feedback Customer Experience Customer Research All Templates reset search reset filter No results f...</li></p><p><h3>Hotjar (Heatmap / Survey / Feedback)</h3><br><strong>来源</strong>: changelog (cached): https://www.hotjar.com/updates/en | blog (cached): https://www.hotjar.com/blog/<br><li><strong>changelog (cached)</strong>: What's new in Hotjar What's new in Hotjar Already a customer? Go to your account Learn more about Hotjar Hotjar makes it easy to go beyond traditional web analytics and understand what users are really doing on your site....</li><br><li><strong>blog (cached)</strong>: Hotjar is now part of Contentsquare. The same easy-to-use tools you know, plus even more ways to understand and improve your website or app. Learn more . Content for UX, product, and digital empathy experts Latest articles Trending topics Hotjar& x27;s tech blog Hotjar product updates Introducing Hotjar AI The AI-powered research assistant that helps you find the insights you need. UX design and analysis Using heatma...</li></p><p><h3>SurveyMonkey (Survey Platform)</h3><br><strong>来源</strong>: release_notes (cached): https://help.surveymonkey.com/en/surveymonkey/new/release-notes/ | blog (cached): https://www.surveymonkey.com/curiosity/<br><li><strong>release_notes (cached)</strong>: Release Notes | SurveyMonkey SurveyMonkey Help GetFeedback Help Thematic Analysis Improvements Get the story behind your open-ended feedback at a glance. Working hand-in-hand with Thematic Analysis, this new feature provides a short, natural-language paragraph that automatically summarizes the core themes, sentiments, and responses within a question. It’s the fastest way to understand your data without reading every ...</li><br><li><strong>blog (cached)</strong>: Curiosity at Work | SurveyMonkey Curiosity at Work Blog Get the latest news, research, and top tips and tricks to make the most of SurveyMonkey products and features. State of Curiosity 2026: Research on what’s cultivating and crushing innovation in workplaces Who do you want to talk to? CNBC and SurveyMonkey American Dream Survey The curiosity gap: Why the AI era demands better questions How B2B buyers decide: Exper...</li></p><p><h3>Qualtrics (Enterprise XM / NPS)</h3><br><strong>来源</strong>: release_notes (cached): https://community.qualtrics.com/product-release-notes-96 | blog (cached): https://www.qualtrics.com/blog/<br><li><strong>release_notes (cached)</strong>: Product Release Notes | New at Qualtrics | Experience Community Skip to main content Log In or Register Experience Community New at Qualtrics Product Release Notes Product Release Notes Discover weekly and monthly product release notes, featured updates, &amp; more. When you subscribe we will email you when there is a new topic in this category QualtricsReleaseNotes Qualtrics Employee published in Product Release Not...</li><br><li><strong>blog (cached)</strong>: Articles - Qualtrics Skip to main content Featured Articles Qualtrics Acquires Healthcare Experience Leader Press Ganey Forsta The New Experience Gap Qualtrics Empowers Organizations to Turn Customer Understanding into Action that Drives Loyalty and Growth Where AI meets human care: Building the future of Healthcare intelligence at Community Health Network - Any - Customer Experience Employee Experience Strategy &amp...</li></p><p><h3>Medallia (Enterprise CX / NPS)</h3><br><strong>来源</strong>: blog (cached): https://www.medallia.com/blog/<br><li><strong>blog (cached)</strong>: Building Tomorrow’s Financial Services Customer Journey & 8211; Medallia Building Tomorrow’s Financial Services Customer Journey Customer expectations in financial services have shifted, leaving no room for fragmented digital experiences or poorly equipped frontlines. Discover why integrating human empathy with real-time&hellip; 5 Hard Truths from the 2026 State of Customer Experience We’ve officially entered the new...</li></p><p><hr><br><h2>📌 对 Insightto 的行动建议</h2><br><li><span class="highlight">⚡ 优先跟踪 Zigpoll / Fairing / Grapevine 的 Shopify App Store 文案、价格和问卷触发场景。</span></li><br><li>把 Delighted 停服迁移作为获客窗口，准备对比页和迁移指引。</li><br><li>继续观察 Typeform / AskNicely / Qualtrics 的 AI agent 化功能，筛选可落地到小店主的轻量版本。</li></p>
+  <div class="section-label">Shopify 原生竞品</div>
+
+  <div class="comp-section">
+    <div class="comp-header">
+      <span class="comp-name">Zigpoll</span>
+      <span class="comp-cat shopify">Shopify · NPS / Survey</span>
+      <span class="source-tag">Shopify App Store / Zigpoll 官网</span>
+    </div>
+    <div class="comp-body">
+      <div class="highlight">Zigpoll 已覆盖购后、站内、退出意图、邮件和短信调查，且强调 AI analytics。它已经不是单纯 post-purchase survey，而是 Shopify 反馈层的全场景工具。</div>
+      <div class="update-item">对 Insightto 的压力点：Zigpoll 的免费层和低价套餐会截走刚起步的小店主，Insightto 需要用“AI 深度 + CRM 反馈管理”避开纯价格战。</div>
+    </div>
   </div>
-  <div class="footer">
-    <span class="generated-by">⚡ 由 Insightto 竞品监控系统自动生成</span>
+
+  <div class="comp-section">
+    <div class="comp-header">
+      <span class="comp-name">Fairing</span>
+      <span class="comp-cat shopify">Shopify · Post-Purchase Attribution</span>
+      <span class="source-tag">Fairing Blog / Shopify App Store</span>
+    </div>
+    <div class="comp-body">
+      <div class="update-item">Fairing 的 Shopify Analytics 集成让归因调查结果回到 Shopify 原生分析视图，这会明显提高商家的日常使用频率。</div>
+      <div class="highlight">Insightto 可以借鉴它的集成叙事：NPS 不应只是一个独立后台，而应和订单、商品、客户标签一起解释为什么客户流失或复购。</div>
+    </div>
+  </div>
+  <div class="action-section">
+    <h3>📌 对 Insightto 的行动建议</h3>
+    <div class='action-item'><div class='action-num'>1</div><div class='action-text'>把“自动 AI 周报邮件”列入近期版本，先解决商家不主动看后台的问题。</div></div>
+    <div class='action-item'><div class='action-num'>2</div><div class='action-text'>做 Delighted 迁移页，重点写迁移步骤、问卷重建、历史数据处理，而不是泛泛说替代。</div></div>
+    <div class='action-item'><div class='action-num'>3</div><div class='action-text'>在 Shopify App Store 文案中突出“Exit Survey + NPS + CRM 反馈管理”的闭环，和 Zigpoll 的泛调查定位区分。</div></div>
   </div>
 </div>
+<footer>Insightto 竞品情报中心 · 补档生成于 2026-06-12 18:00</footer>
 </body>
 </html>
