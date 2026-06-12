@@ -4,16 +4,17 @@
     "category": "Survey / Form Builder",
     "urls": {
       "blog": "https://www.typeform.com/blog/",
-      "product_updates": "https://www.typeform.com/product-updates/"
+      "product_updates": "https://www.typeform.com/whats-new"
     },
     "focus": ["NPS", "survey logic", "integrations", "AI features"]
   },
   {
     "name": "Delighted",
     "category": "NPS / CSAT / CES",
+    "status": "shutdown",
+    "shutdown_note": "Qualtrics 收购后停止运营，续费截止 2026年6月",
     "urls": {
-      "blog": "https://delighted.com/blog",
-      "help": "https://help.delighted.com/hc/en-us"
+      "blog": "https://delighted.com/blog"
     },
     "focus": ["NPS", "CSAT", "CES", "exit survey", "reporting"]
   },
@@ -23,14 +24,14 @@
     "urls": {
       "blog": "https://www.asknicely.com/blog"
     },
-    "focus": ["NPS", "frontline feedback", "coaching", "integrations"]
+    "focus": ["NPS", "frontline feedback", "coaching", "integrations", "AI agents"]
   },
   {
     "name": "Survicate",
     "category": "Survey / NPS / In-product",
     "urls": {
       "blog": "https://survicate.com/blog/",
-      "changelog": "https://survicate.com/product-updates/"
+      "changelog": "https://changelog.survicate.com/"
     },
     "focus": ["in-product survey", "NPS", "exit intent", "Shopify"]
   },
@@ -39,7 +40,7 @@
     "category": "Heatmap / Survey / Feedback",
     "urls": {
       "blog": "https://www.hotjar.com/blog/",
-      "changelog": "https://changelog.hotjar.com/"
+      "changelog": "https://www.hotjar.com/updates/en"
     },
     "focus": ["survey", "feedback widget", "heatmap", "session recording"]
   },
@@ -47,7 +48,8 @@
     "name": "SurveyMonkey",
     "category": "Survey Platform",
     "urls": {
-      "blog": "https://www.surveymonkey.com/curiosity/"
+      "blog": "https://www.surveymonkey.com/curiosity/",
+      "release_notes": "https://help.surveymonkey.com/en/surveymonkey/new/release-notes/"
     },
     "focus": ["NPS", "AI analysis", "enterprise", "integrations"]
   },
@@ -55,7 +57,8 @@
     "name": "Qualtrics",
     "category": "Enterprise XM / NPS",
     "urls": {
-      "blog": "https://www.qualtrics.com/blog/"
+      "blog": "https://www.qualtrics.com/blog/",
+      "release_notes": "https://community.qualtrics.com/product-release-notes-96"
     },
     "focus": ["NPS", "AI insights", "enterprise", "CX"]
   },
@@ -66,5 +69,57 @@
       "blog": "https://www.medallia.com/blog/"
     },
     "focus": ["NPS", "AI", "enterprise CX", "real-time feedback"]
+  },
+  {
+    "name": "Zigpoll",
+    "category": "Shopify 原生 NPS / Survey",
+    "shopify_native": true,
+    "urls": {
+      "app_store": "https://apps.shopify.com/zigpoll",
+      "blog": "https://www.zigpoll.com/blog"
+    },
+    "focus": ["Shopify NPS", "post-purchase survey", "exit intent", "zero-party data"],
+    "notes": "Delighted 关闭后重要承接竞品，Shopify 生态直接竞品"
+  },
+  {
+    "name": "Fairing",
+    "category": "Shopify 原生购后调研",
+    "shopify_native": true,
+    "urls": {
+      "app_store": "https://apps.shopify.com/fairing",
+      "blog": "https://www.fairing.co/blog"
+    },
+    "focus": ["post-purchase survey", "attribution", "zero-party data", "Shopify checkout"],
+    "notes": "专注购后调研和归因，与 Insightto Exit Survey 场景直接重叠"
+  },
+  {
+    "name": "Grapevine Surveys",
+    "category": "Shopify 原生 NPS / Survey",
+    "shopify_native": true,
+    "urls": {
+      "app_store": "https://apps.shopify.com/grapevine",
+      "website": "https://grapevine-surveys.com/"
+    },
+    "focus": ["NPS", "post-purchase survey", "Shopify", "customer feedback"],
+    "notes": "Shopify 专注 NPS 工具，与 Insightto 定位最为接近"
+  },
+  {
+    "name": "Birdeye",
+    "category": "声誉管理 / NPS / 多门店反馈",
+    "urls": {
+      "blog": "https://birdeye.com/blog/",
+      "product_news": "https://birdeye.com/press/"
+    },
+    "focus": ["reputation management", "NPS", "Google reviews", "multi-location"],
+    "notes": "AskNicely 同类竞品，已承接部分 Delighted 企业用户"
+  },
+  {
+    "name": "SmartSurvey",
+    "category": "轻量 NPS / Survey 工具",
+    "urls": {
+      "blog": "https://www.smartsurvey.co.uk/blog"
+    },
+    "focus": ["NPS", "CSAT", "survey templates", "UK market"],
+    "notes": "日报 2026-05-28 中明确为 Delighted 主要迁移目标之一"
   }
 ]
