@@ -8,172 +8,86 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background: #f0f2f8;
     color: #1a1a2e;
     line-height: 1.6;
+    min-height: 100vh;
   }
   .report-header {
-    background: linear-gradient(135deg, #5c4fff 0%, #8b74ff 50%, #a855f7 100%);
+    background: linear-gradient(135deg, #5c4fff 0%, #8b6fff 50%, #a78bfa 100%);
+    padding: 44px 36px 34px;
     color: white;
-    padding: 48px 40px 40px;
     position: relative;
     overflow: hidden;
   }
   .report-header::before {
     content: '';
     position: absolute;
-    top: -60px; right: -60px;
-    width: 240px; height: 240px;
-    border-radius: 50%;
+    top: -70px;
+    right: -50px;
+    width: 220px;
+    height: 220px;
     background: rgba(255,255,255,0.06);
-  }
-  .report-header::after {
-    content: '';
-    position: absolute;
-    bottom: -40px; left: 40px;
-    width: 160px; height: 160px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.04);
   }
   .report-title {
-    font-size: 28px;
+    font-size: 29px;
     font-weight: 800;
     letter-spacing: -0.5px;
     margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
   }
   .report-meta {
-    font-size: 14px;
-    opacity: 0.85;
-    font-weight: 500;
-  }
-  .report-meta span {
-    display: inline-block;
-    background: rgba(255,255,255,0.15);
-    border-radius: 20px;
-    padding: 3px 12px;
-    margin-right: 8px;
-    margin-top: 8px;
-    font-size: 13px;
-  }
-  .container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 32px 24px;
-  }
-  .section-title {
-    font-size: 18px;
-    font-weight: 700;
-    color: #5c4fff;
-    margin-bottom: 16px;
-    margin-top: 32px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid #e0dbff;
+    position: relative;
+    z-index: 1;
     display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .comp-section {
-    background: white;
-    border-radius: 16px;
-    margin-bottom: 16px;
-    overflow: hidden;
-    box-shadow: 0 1px 4px rgba(92,79,255,0.06);
-    border: 1px solid #eceaf8;
-    transition: box-shadow 0.2s;
-  }
-  .comp-section:hover {
-    box-shadow: 0 4px 16px rgba(92,79,255,0.10);
-  }
-  .comp-header {
-    padding: 18px 22px 14px;
-    background: #fafafe;
-    border-bottom: 1px solid #f0eeff;
-    display: flex;
-    align-items: center;
-    gap: 12px;
     flex-wrap: wrap;
+    gap: 18px;
+    font-size: 14px;
+    opacity: 0.88;
   }
-  .comp-name {
-    font-size: 16px;
-    font-weight: 700;
-    color: #1a1a2e;
+  .container { max-width: 980px; margin: 0 auto; padding: 30px 20px 56px; }
+  .summary-bar {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
   }
-  .comp-cat {
+  .summary-card {
+    flex: 1;
+    min-width: 180px;
+    background: #fff;
+    border: 1px solid #e7e9f3;
+    border-radius: 14px;
+    padding: 16px 18px;
+    box-shadow: 0 2px 10px rgba(92,79,255,0.05);
+  }
+  .summary-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #9ca3af;
+    margin-bottom: 8px;
+  }
+  .summary-value {
+    font-size: 28px;
+    font-weight: 800;
+    color: #5c4fff;
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .summary-note {
     font-size: 12px;
     color: #6b7280;
-    font-weight: 500;
-    background: #f3f4f6;
-    border-radius: 8px;
-    padding: 2px 9px;
-  }
-  .source-tag {
-    font-size: 11px;
-    color: #5c4fff;
-    font-weight: 600;
-    background: #ede9ff;
-    border-radius: 8px;
-    padding: 2px 9px;
-    margin-left: auto;
-  }
-  .shopify-badge {
-    font-size: 11px;
-    color: #059669;
-    font-weight: 700;
-    background: #d1fae5;
-    border-radius: 8px;
-    padding: 2px 9px;
-  }
-  .shutdown-badge {
-    font-size: 11px;
-    color: #dc2626;
-    font-weight: 700;
-    background: #fee2e2;
-    border-radius: 8px;
-    padding: 2px 9px;
-  }
-  .comp-body {
-    padding: 16px 22px 20px;
-  }
-  .update-item {
-    padding: 9px 12px;
-    margin: 6px 0;
-    border-radius: 8px;
-    font-size: 14px;
-    background: #f9f9fc;
-    border-left: 3px solid #d1ceff;
-    color: #374151;
-    line-height: 1.55;
-  }
-  .highlight-row {
-    background: #fffbeb;
-    border-left: 3px solid #f59e0b;
-    color: #1a1a2e;
-    font-weight: 500;
-  }
-  .new-badge {
-    display: inline-block;
-    font-size: 10px;
-    font-weight: 700;
-    background: #5c4fff;
-    color: white;
-    border-radius: 4px;
-    padding: 1px 6px;
-    margin-right: 6px;
-    vertical-align: middle;
-  }
-  .no-update {
-    color: #9ca3af;
-    font-size: 13px;
-    font-style: italic;
-    padding: 10px 12px;
   }
   .trend-box {
-    background: linear-gradient(135deg, #f0eeff 0%, #faf5ff 100%);
+    background: linear-gradient(135deg, #f7f3ff, #eef2ff);
     border: 1px solid #ddd6fe;
-    border-radius: 14px;
-    padding: 20px 24px;
-    margin: 28px 0;
+    border-radius: 16px;
+    padding: 22px 24px;
+    margin-bottom: 28px;
   }
   .trend-box h3 {
     font-size: 15px;
@@ -181,326 +95,513 @@
     color: #5c4fff;
     margin-bottom: 12px;
   }
-  .trend-item {
+  .trend-box ul { padding-left: 18px; }
+  .trend-box li {
     font-size: 14px;
-    color: #374151;
-    padding: 5px 0;
-    border-bottom: 1px solid #ede9ff;
+    color: #4b5563;
+    margin-bottom: 8px;
+  }
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #5c4fff;
+    margin: 30px 0 14px;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 8px;
   }
-  .trend-item:last-child { border-bottom: none; }
-  .trend-item::before { content: '→'; color: #5c4fff; font-weight: 700; flex-shrink: 0; }
-  .action-section {
-    background: linear-gradient(135deg, #5c4fff 0%, #7c3aed 100%);
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, rgba(92,79,255,0.22), transparent);
+  }
+  .comp-section {
+    background: #fff;
+    border: 1px solid #e8eaf2;
     border-radius: 16px;
-    padding: 26px 28px;
-    margin-top: 32px;
-    color: white;
-  }
-  .action-section h3 {
-    font-size: 17px;
-    font-weight: 700;
     margin-bottom: 16px;
-    opacity: 0.95;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(17,24,39,0.04);
   }
-  .action-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    margin-bottom: 14px;
-    background: rgba(255,255,255,0.1);
-    border-radius: 10px;
-    padding: 13px 16px;
-  }
-  .action-item:last-child { margin-bottom: 0; }
-  .action-num {
-    font-size: 18px;
-    font-weight: 800;
-    opacity: 0.7;
-    flex-shrink: 0;
-    line-height: 1.3;
-  }
-  .action-text {
-    font-size: 14px;
-    line-height: 1.6;
-    opacity: 0.95;
-  }
-  .action-text strong { opacity: 1; }
-  .delighted-box {
-    background: #fff1f1;
-    border: 1.5px solid #fca5a5;
-    border-radius: 12px;
-    padding: 14px 18px;
-    margin-bottom: 16px;
-    font-size: 13.5px;
-    color: #7f1d1d;
+  .comp-header {
+    padding: 16px 22px;
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #f1f3f9;
+    background: linear-gradient(to right, #fafbff, #ffffff);
   }
+  .comp-name {
+    font-size: 17px;
+    font-weight: 700;
+    color: #111827;
+    flex: 1;
+  }
+  .comp-cat,
+  .shopify-badge,
+  .shutdown-badge,
+  .source-tag {
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 999px;
+    padding: 3px 10px;
+    white-space: nowrap;
+  }
+  .comp-cat {
+    color: #6b7280;
+    background: #f3f4f6;
+  }
+  .shopify-badge {
+    color: #047857;
+    background: #d1fae5;
+  }
+  .shutdown-badge {
+    color: #b91c1c;
+    background: #fee2e2;
+  }
+  .source-tag {
+    color: #5c4fff;
+    background: #ede9fe;
+  }
+  .comp-body { padding: 16px 22px 20px; }
+  .update-item {
+    background: #f9fafc;
+    border-left: 3px solid #d1d5db;
+    border-radius: 10px;
+    padding: 11px 14px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #374151;
+  }
+  .highlight-row {
+    border-left-color: #5c4fff;
+    background: linear-gradient(to right, #ede9fe, #faf7ff);
+  }
+  .shutdown-row {
+    border-left-color: #dc2626;
+    background: #fff5f5;
+  }
+  .date-chip {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    color: #6b7280;
+    background: #f3f4f6;
+    border-radius: 6px;
+    padding: 2px 8px;
+    margin-bottom: 6px;
+  }
+  .no-update {
+    font-size: 13px;
+    color: #6b7280;
+    background: #fafafa;
+    border: 1px dashed #d1d5db;
+    border-radius: 10px;
+    padding: 12px 14px;
+  }
+  .action-section {
+    margin-top: 30px;
+    background: linear-gradient(135deg, #16192d, #2b2d66);
+    color: white;
+    border-radius: 18px;
+    padding: 26px 28px 22px;
+  }
+  .action-section h2 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .action-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 13px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .action-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .action-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #5c4fff, #8b5cf6);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .action-text {
+    font-size: 14px;
+    color: rgba(255,255,255,0.9);
+  }
+  .action-text strong { color: #c4b5fd; }
   .footer {
     text-align: center;
     color: #9ca3af;
     font-size: 12px;
-    padding: 24px 0 40px;
+    margin-top: 34px;
   }
-  .tag-ai { color: #7c3aed; font-weight: 600; }
+  code {
+    background: rgba(92,79,255,0.08);
+    border-radius: 6px;
+    padding: 1px 6px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12px;
+  }
+  @media (max-width: 720px) {
+    .report-header { padding: 34px 22px 28px; }
+    .container { padding: 24px 14px 44px; }
+    .summary-card { min-width: 100%; }
+    .comp-header { padding: 14px 16px; }
+    .comp-body { padding: 14px 16px 18px; }
+    .action-section { padding: 22px 18px 18px; }
+  }
 </style>
 </head>
 <body>
+  <header class="report-header">
+    <h1 class="report-title">Insightto 竞品日报</h1>
+    <div class="report-meta">
+      <span>📅 2026-07-16</span>
+      <span>🔎 官方 changelog / release notes / blog / Shopify App Store 复核</span>
+      <span>🤖 分析层：GPT / OpenAI</span>
+    </div>
+  </header>
 
-<div class="report-header">
-  <div class="report-title">📊 Insightto 竞品功能更新日报</div>
-  <div class="report-meta">
-    <span>📅 2026-07-16 周四</span>
-    <span>🔍 监控 11 家竞品</span>
-    <span>⚡ 直接相关 10 条</span>
-    <span>🆕 今日新增：AskNicely Review Routing Agent</span>
-  </div>
-</div>
-
-<div class="container">
-
-  <!-- Delighted 停服提醒 -->
-  <div class="delighted-box">
-    🚨 <strong>Delighted 停服第 16 天</strong>（2026-06-30 正式停服，用户数据已删除）。Q3 迁移窗口持续，Insightto 应维持迁移引导页/SEO 长尾词布局，承接持续释放的迁移流量。
-  </div>
-
-  <!-- ======= 分组1：Shopify 原生竞品 ======= -->
-  <div class="section-title">🔥 Shopify 原生竞品（重点监控）</div>
-
-  <!-- Zigpoll -->
-  <div class="comp-section">
-    <div class="comp-header">
-      <div class="comp-name">Zigpoll</div>
-      <div class="comp-cat">Shopify NPS/Survey</div>
-      <div class="shopify-badge">🛍️ Shopify 原生</div>
-      <div class="source-tag">zigpoll.com / Shopify App Store</div>
-    </div>
-    <div class="comp-body">
-      <div class="update-item highlight-row">⚡ <span class="new-badge">常态化</span> <strong>Synthetic Market Research</strong> 已稳定进入主页核心功能区：定义受众画像（含9+预制模版）→ 数分钟内获得百条 AI 合成回复（100% 完成率），支持 94+ 语言、分支逻辑，直接接入 Zigpoll 分析仪表盘，可在真实问卷上线前验证问卷流程。与 Insightto AI 分析方向高度竞争。</div>
-      <div class="update-item highlight-row">⚡ <strong>MCP Server 常态化</strong>：接入 Claude/ChatGPT/Copilot 等 AI 工具，用自然语言直接查询问卷数据。已成为官网主要卖点，Shopify 原生 AI 化竞争加剧。</div>
-      <div class="update-item">Shopify App Store <strong>487+ 条评价</strong>（全部 5 星），受信任商家包括 Steve Madden、Karl Lagerfeld、Crocs、lululemon（官网展示客户升级至 20,000+ 家），品牌背书持续强化。</div>
-      <div class="update-item">定价：Free（100 次/月）、Standard $29/mo（500 次）、Advanced $97/mo、Ultimate $194/mo（无限响应），AI 合成研究在 Free 计划中含 100 次合成响应。</div>
-    </div>
-  </div>
-
-  <!-- Fairing -->
-  <div class="comp-section">
-    <div class="comp-header">
-      <div class="comp-name">Fairing</div>
-      <div class="comp-cat">购后调研 + 归因</div>
-      <div class="shopify-badge">🛍️ Shopify 原生</div>
-      <div class="source-tag">fairing.canny.io/changelog</div>
-    </div>
-    <div class="comp-body">
-      <div class="update-item highlight-row">⚡ <span class="new-badge">7/10 最新</span> <strong>Workspace Name 自定义</strong>：可在 Settings 直接修改工作区显示名称（如"Brand – UK"），多品牌/多市场独立命名，解决多工作区混淆问题。对于多店管理的 Shopify 商家体验显著提升，直接与 Insightto 多店场景竞争。</div>
-      <div class="update-item highlight-row">⚡ <span class="new-badge">6/27 持续</span> <strong>Hosted Landing Page</strong>（全计划免费）：在品牌邮件中嵌入 NPS 0-10 数字按钮 HTML，点击跳转至 Fairing 托管落地页，得分直接记录。<strong>直接竞争 Insightto 邮件 NPS 场景</strong>，且全计划免费是强竞争压力。</div>
-      <div class="update-item">6/18 Klaviyo 集成升级为 OAuth，无需手动管理 API Key，连接更安全便捷，Shopify 邮件营销生态深度绑定进一步加强。</div>
-      <div class="update-item">6/2 Analytics Comparison Periods：在 Fairing Analytics 中直接对比上一期/去年同期/去年同期（对齐工作日），无需导出 CSV，归因分析体验持续提升。</div>
-      <div class="update-item">4/2 Shopify Analytics Integration：Fairing 问卷响应数据同步至 Shopify Order Metafields，可在 Shopify 原生分析界面直接透视归因、NPS、人口统计数据，并与产品/配送信息交叉分析。被 Shopify 官方 Spring 2026 博客作为标杆案例引用。</div>
-      <div class="update-item">3/24 Hazel Integration：与 Hazel AI 分析平台（100+ 数据源统一）打通，联合发现趋势与收益机会。</div>
-    </div>
-  </div>
-
-  <!-- Grapevine Surveys -->
-  <div class="comp-section">
-    <div class="comp-header">
-      <div class="comp-name">Grapevine Surveys</div>
-      <div class="comp-cat">Shopify NPS / 购后调研</div>
-      <div class="shopify-badge">🛍️ Shopify 原生</div>
-      <div class="source-tag">Shopify App Store（7/9 最新评价）</div>
-    </div>
-    <div class="comp-body">
-      <div class="update-item highlight-row">⚡ <span class="new-badge">7/9→7/10 最新</span> <strong>MCP AI Connection 上线</strong>：7/9 有用户在 App Store 评价中首提，founder 当天确认并于 7/10 回复已上线，可通过 AI 助手自然语言分析问卷中的开放文本回复。Grapevine 跻身 Shopify 原生 AI 化阵营，Shopify Survey 竞争格局升温。</div>
-      <div class="update-item highlight-row">⚡ <strong>Delighted 迁移专页持续运营</strong>：面向 Delighted 停服用户的完整迁移引导页（对比定价 $25/mo vs Delighted $224/mo+），Shopify 原生迁移承接流量仍在持续释放。App Store <strong>195 条评价全部 5 星</strong>，用户增长稳健。</div>
-      <div class="update-item">5/6 配送国家定向 Checkout Survey、4/22 支付方式定向、4/20 展示规则系统已整合成型，四维精准定向体系完整（配送国家+支付方式+客户类型+订单金额），Shopify Checkout Survey 投放能力持续领先。</div>
-      <div class="update-item">5/12 单选按钮化（Button 一键作答），3/17 问卷模版库上线，产品体验持续提升。定价 $25/mo 无限响应，POS/on-site/email/one-click 全渠道覆盖。</div>
-    </div>
-  </div>
-
-  <!-- ======= 分组2：通用 Survey 竞品 ======= -->
-  <div class="section-title">📊 通用 Survey / NPS 竞品</div>
-
-  <!-- Typeform -->
-  <div class="comp-section">
-    <div class="comp-header">
-      <div class="comp-name">Typeform</div>
-      <div class="comp-cat">表单 / Survey / AI 研究平台</div>
-      <div class="source-tag">prnewswire.com / typeform.com</div>
-    </div>
-    <div class="comp-body">
-      <div class="update-item highlight-row">⚡ <span class="new-badge">6/9</span> <strong>Research Flow 正式发布</strong>：AI 主持研究工作流，同时面访数百受访者（文字+语音+视频），每题反馈量 4.5x↑，AI 自动主题提取+情感评分+视频精华剪辑，周五启动周一即可获得洞察报告。定位从表单工具跨越为 AI 研究平台，<strong>对 Insightto AI 分析模块构成上游竞争</strong>。</div>
-      <div class="update-item">5/14 <strong>Growth Flow 正式版</strong>：AI 客户全生命周期自动化，表单提交 → 线索富化（B2B 92% 匹配率）→ 自动分组 → 多渠道跟进（Email/SMS/Klaviyo）→ 电子签名/日历预约一体化。</div>
-      <div class="update-item">Winter '26（2/4）：AI 数据富化（B2B 92% / B2C 71% 匹配率）+ AI Memory 知识库 + 企业 Admin Panel Dashboard + Inbound Sales Agent + PayPal 支付集成。</div>
-      <div class="update-item">7月：单页多题（Multiple questions per page）上线；6月 AI Connectors 接入 Slack/Notion/Shopify；Spring Typeforum 后整体定价全线上调。</div>
-    </div>
-  </div>
-
-  <!-- AskNicely -->
-  <div class="comp-section">
-    <div class="comp-header">
-      <div class="comp-name">AskNicely</div>
-      <div class="comp-cat">NPS / CX / AI Agent</div>
-      <div class="source-tag">asknicely.com / zendesk.com</div>
-    </div>
-    <div class="comp-body">
-      <div class="update-item highlight-row">⚡ <span class="new-badge">7/14 今日最新</span> <strong>Review Routing Agent 正式发布</strong>（NiceAI® 第四个 Agent）：调查提交后在原流程内自动弹出评论请求，按可配置规则将用户路由至 Google/Yelp/Facebook 等平台（如 50% Google + 25% Yelp + 25% Facebook），归因至正确门店+员工。某鞋类连锁 30 天内 Trustpilot 从 2.7→4.6，Google 评论量+161%。<strong>NiceAI® 完整闭环：Dynamic Surveys→Insights Agent→Response Agent→Review Routing Agent</strong>，竞争烈度持续升级。</div>
-      <div class="update-item highlight-row">⚡ <span class="new-badge">6/10</span> <strong>Zendesk 工单查询接入 Ask NiceAI</strong>：可在 AI 对话中直接查询受访者 Zendesk 工单，打通反馈与客服数据，<strong>与 Insightto CRM 反馈管理功能直接竞争</strong>。</div>
-      <div class="update-item"><span class="new-badge">6/10</span> <strong>AI Themes 2.0 全量上线</strong>：父子主题层级 + 每个主题按情感着色（正面/中性/负面）+ AI/用户创建主题统一展示表。Insight Agent 邮件"查看完整洞察"链接对所有收件人开放（含非所有者只读）。</div>
-      <div class="update-item">6/10 更多改进：Opt-Out Webhook（联系人退订 SMS/邮件调查时实时推送）、Workflow Email 富文本编辑器（粗体/列表/链接）、PDF 导出全员开放、Saved Reports 重运行进度提示。</div>
-      <div class="update-item">4月 Reputation Manager 正式发布：Google/Facebook/ZocDoc 等评论归因至具体员工，附评论图片/视频预览，系统式竞争 Insightto CRM 反馈管理。</div>
-    </div>
-  </div>
-
-  <!-- Survicate -->
-  <div class="comp-section">
-    <div class="comp-header">
-      <div class="comp-name">Survicate</div>
-      <div class="comp-cat">轻量 NPS / AI-Native 反馈</div>
-      <div class="source-tag">changelog.survicate.com</div>
-    </div>
-    <div class="comp-body">
-      <div class="update-item highlight-row">⚡ <span class="new-badge">7/8</span> <strong>Research Hub 全文回放</strong>：可在分析报告前直接打开已上传访谈录音原文，点击逐字稿任意行即跳转录音对应时间点，自定义发言人标签。AI 分析结果可溯源原始访谈，研究质量可验证。</div>
-      <div class="update-item"><span class="new-badge">7/6</span> 三项问卷精控：① "None of the Above" 多选清除选项 ② Pin 固定答案（随机化时锁定特定选项位置）③ 跨 Web/Link/Mobile 渠道统一联系人表单识别。</div>
-      <div class="update-item">6/30 链接问卷 One-Page View：全题单页展示 + Submit 一次性校验提交，AI 追问在文本作答完成时仍正常触发，Logo/免责声明各显示一次。</div>
-      <div class="update-item">6/17 Research Hub Charts：在研究报告中通过 / 命令插入基于项目洞察构建的图表，可视化证据强化研究说服力。6/24 PDF 导出引擎重构：非拉丁字符（中日韩/阿拉伯/波兰）及 Emoji 正常渲染，多图表单文件导出。</div>
-    </div>
-  </div>
-
-  <!-- Hotjar -->
-  <div class="comp-section">
-    <div class="comp-header">
-      <div class="comp-name">Hotjar（已并入 Contentsquare）</div>
-      <div class="comp-cat">行为分析 + 问卷</div>
-      <div class="source-tag">hotjar.com</div>
-    </div>
-    <div class="comp-body">
-      <div class="update-item">Hotjar 已全面并入 Contentsquare 平台，原有热图/录制/问卷/Engage 功能均保留，并新增 Attention Maps、Error Monitoring、Performance Monitoring、Funnels，免费计划提升至 200k 会话/月（原 35 次/天），问卷响应提升至 100 条/月（原 20 条）。</div>
-      <div class="update-item">Contentsquare Free 计划新增：<span class="tag-ai">AI</span> Sense AI（热图/录制 AI 摘要 + Sense Chat 自然语言查询）、LLM Connect（MCP）可接入 ChatGPT/Claude/Copilot 直接查询 Contentsquare 数据、Slack/Jira/Unbounce 等 10+ 集成，均在免费计划内提供。</div>
-      <div class="update-item">Survey 模块：AI Survey Generator（描述目标自动生成问卷）+ AI 情感分析（正面/中性/负面分类）+ AI 主题检测（开放文本）+ AI 摘要报告。问卷仍主要以网站行为触发为核心（exit-intent/页面停留时长等），偏行为分析侧而非 NPS 专注工具。</div>
-      <div class="no-update">本期无平台级重大新功能更新（7月），核心变化为与 Contentsquare 的持续融合深化。</div>
-    </div>
-  </div>
-
-  <!-- SurveyMonkey -->
-  <div class="comp-section">
-    <div class="comp-header">
-      <div class="comp-name">SurveyMonkey</div>
-      <div class="comp-cat">通用 Survey / AI 反馈</div>
-      <div class="source-tag">surveymonkey.com / uk.surveymonkey.com</div>
-    </div>
-    <div class="comp-body">
-      <div class="update-item highlight-row">⚡ <strong>Claude Connector（Spring '26）</strong>：SurveyMonkey 接入 Claude MCP，用户可通过对话方式管理完整反馈工作流（从问题到洞察），<strong>与 Insightto AI 分析方向竞争</strong>。</div>
-      <div class="update-item"><strong>LaunchPad（CuriosityCon，即将发布）</strong>：按次付费的自动化市场调研套件，接入 335M+ 受访者面板，自动评分卡突出胜出方案，聚焦概念验证/产品研究。</div>
-      <div class="update-item"><strong>GetFeedback 2.0（6月上线）</strong>：行为触发式网页反馈按钮（滚动深度/停留时长/退出意图），捕获摩擦点实时洞察，直接连接页面事件，偏 CX 数字摩擦诊断方向。</div>
-      <div class="update-item">AI Chat 问卷构建：对话方式实时修改问卷（调整语气/添加逻辑/跳过题设置），AI 直接在问卷中执行变更；Spring '26 新增动态重定向（按答案引导至不同结束页）、AI 主题分析 + 情感自动开启、矩阵题堆叠条形图/纵向趋势视图、Salesforce SMS 自动触发调查。</div>
-    </div>
-  </div>
-
-  <!-- Qualtrics -->
-  <div class="comp-section">
-    <div class="comp-header">
-      <div class="comp-name">Qualtrics</div>
-      <div class="comp-cat">企业级 CX / XM</div>
-      <div class="source-tag">qualtrics.com / community.qualtrics.com</div>
-    </div>
-    <div class="comp-body">
-      <div class="update-item"><span class="new-badge">X4 3/18</span> <strong>Experience Agents™</strong>（Initial Preview 中）：在调查流程中实时 AI 介入解决投诉问题（TruGreen 案例：升级率降低），4x 更快 Omnichannel 部署（Genesys/NICE/Salesforce 一键接入），社交监听新增 Facebook/Instagram。</div>
-      <div class="update-item"><span class="new-badge">X4 3/18</span> <strong>自动文本分析</strong>：AI 实时检测并组织客户反馈主题，几小时替代原来数周的人工建模，结果具决定性+可审计性，Personal Argentina 案例：人工 2 周→AI 1 小时。竞争 Qualtrics 自身 NPS+CX 下游分析市场。</div>
-      <div class="update-item">4/22 周报：在线面板 Quota Loosening（活跃项目中可宽松配额目标，保护关键变量的同时放开其他维度）；4/8 Number Chart Widget 新题型（数字刻度）。</div>
-      <div class="update-item">3/11 Competitive Reviews（在线声誉管理模块加载竞争对手评论，对比本地竞争位置表现）；2/11 Lifecycle via Microsoft Teams（EX 生命周期调查可通过 Teams 发送）。</div>
-      <div class="update-item"><strong>Delighted 停服连带</strong>：Qualtrics 继续以 Delighted 停服为时机推动用户迁移至 XM Suite，但价格和复杂度不适合 Shopify 中小商家，属于 Insightto 的间接竞争而非直接威胁。</div>
-    </div>
-  </div>
-
-  <!-- ======= 分组3：Delighted 承接竞品 ======= -->
-  <div class="section-title">🎯 Delighted 承接竞品（重点监控）</div>
-
-  <!-- Birdeye -->
-  <div class="comp-section">
-    <div class="comp-header">
-      <div class="comp-name">Birdeye</div>
-      <div class="comp-cat">声誉管理 + NPS + AI CX</div>
-      <div class="source-tag">birdeye.com/sg/updates</div>
-    </div>
-    <div class="comp-body">
-      <div class="update-item"><span class="new-badge">7/10 近期</span> <strong>Dashboard Edit Access</strong>：仪表盘多用户实时协作编辑权限，无需创建副本，多门店团队协作反馈管理体验提升（昨日日报已记录，本期持续跟踪中）。</div>
-      <div class="update-item">5/11 <strong>Yelp Messaging Inbox</strong>：Yelp 消息与评论统一在 Inbox 管理，无需切换平台，纳入 Inbox 报告和通知。4/16 Freshdesk 集成、4/7 Zendesk 集成（均自动触发评论/调查请求），与 Insightto CRM 反馈管理方向高度重叠。</div>
-      <div class="update-item">2/20 Cornerstone 集成、2/18 Jobber 集成，垂直行业（兽医/现场服务等）生态持续扩张，客服渠道全覆盖。</div>
-      <div class="update-item">AI 全栈建设：BirdAI（Review Response Agent + Lead Gen Agent + Insights AI + Surveys AI + Template Design Agent），自动回评+潜客捕获+行业特定 NPS 分析持续深化。价格 $299/mo 起（按门店数定制）。</div>
-    </div>
-  </div>
-
-  <!-- SmartSurvey -->
-  <div class="comp-section">
-    <div class="comp-header">
-      <div class="comp-name">SmartSurvey</div>
-      <div class="comp-cat">Survey / Delighted 迁移目标</div>
-      <div class="source-tag">smartsurvey.co.uk/updates</div>
-    </div>
-    <div class="comp-body">
-      <div class="update-item highlight-row">⚡ <span class="new-badge">3/18</span> <strong>Conditional Email Triggers</strong>：满足特定条件的响应自动通知对应负责人，近实时触发，<strong>与 Insightto CRM 反馈路由功能直接竞争</strong>，是承接 Delighted 迁移用户的关键工作流需求。</div>
-      <div class="update-item">3/13 <strong>Display Logic</strong>：基于答案/元数据/自定义变量的单问卷多路径分支（Page/Question/In-Page/Answer Choice 四层 Display Logic），单份问卷适配多受众，完成率提升，数据更干净。直接承接 Delighted 用户的多问卷合并需求。</div>
-      <div class="update-item">2/2 <strong>Reputation Management</strong>：将 Google/Trustpilot 公开评论与问卷数据整合在同一平台，形成公开+私有反馈的完整视图。承接 Delighted 停服后对声誉管理能力有需求的用户。</div>
-      <div class="update-item">1/15 Multi-Source Chart Tiles：跨多份问卷合并 NPS/满意度图表，自动计算总分，对 Delighted 迁移用户尤为实用（Delighted 多项目报告的替代方案）。</div>
-      <div class="update-item">2025年遗产功能（仍在宣推）：AI 回复翻译（多语言全局统一分析）+ AI 问卷翻译 + AutoCategorise AI 开放文本自动分类 + CSAT/eSAT 计算 + AI 问卷生成器，承接全球化 Delighted 用户。6/29 Secure Custom Variables（HubSpot/Mailchimp/Braze 安全传值，不暴露 URL 参数）。</div>
-    </div>
-  </div>
-
-  <!-- Delighted 状态 -->
-  <div class="comp-section">
-    <div class="comp-header">
-      <div class="comp-name">Delighted（已停服）</div>
-      <div class="comp-cat">NPS Survey</div>
-      <div class="shutdown-badge">🔴 停服第 16 天</div>
-      <div class="source-tag">Qualtrics 旗下</div>
-    </div>
-    <div class="comp-body">
-      <div class="update-item">Delighted 已于 2026-06-30 正式停服（第 16 天），所有客户数据已删除。Qualtrics 停止续费，引导用户迁往 Qualtrics XM（价格/复杂度均不适合中小 Shopify 商家）。迁移流量释放至 Q3，Grapevine/SmartSurvey/Insightto 等均有机会承接。</div>
-    </div>
-  </div>
-
-  <!-- 行业趋势 -->
-  <div class="trend-box">
-    <h3>📈 本期行业趋势观察（2026-07-16）</h3>
-    <div class="trend-item"><strong>AI Agent 化竞争进入新阶段</strong>：AskNicely NiceAI® 四 Agent 闭环（7/14 Review Routing Agent）、Typeform Research Flow、SurveyMonkey Claude Connector、Zigpoll MCP Server，Survey 工具正全面向「AI 自动化工作流平台」升维。</div>
-    <div class="trend-item"><strong>评论声誉与 NPS 融合</strong>：AskNicely Review Routing Agent 将调查反馈转化为 AI 可发现的公开评论（Google/Yelp/Facebook），"声誉即 AI 可见度"成新叙事，Birdeye 同方向。NPS 工具正在向全栈声誉管理扩展。</div>
-    <div class="trend-item"><strong>Shopify 原生 AI 化竞争加剧</strong>：Zigpoll MCP Server + Synthetic Research、Grapevine MCP AI Connection 均于本周期内常态化运营，Shopify 商家正面临 AI 原生调研工具的系统性升级。</div>
-    <div class="trend-item"><strong>Delighted Q3 迁移红利持续</strong>：停服第 16 天，Grapevine/SmartSurvey 迁移页仍活跃运营，Insightto 应维持迁移 SEO 内容投入（尤其"Delighted alternative for Shopify"长尾词）。</div>
-    <div class="trend-item"><strong>Fairing 持续深化邮件 NPS 场景</strong>：Hosted Landing Page（6/27）全计划免费、Workspace Name（7/10）等迭代节奏稳定，购后归因+邮件 NPS 的组合优势对 Insightto Exit Survey + NPS 构成持续压力。</div>
-  </div>
-
-  <!-- 行动建议 -->
-  <div class="action-section">
-    <h3>📌 对 Insightto 的行动建议</h3>
-    <div class="action-item">
-      <div class="action-num">01</div>
-      <div class="action-text">
-        <strong>【Shopify 原生优先】对标 Grapevine MCP AI Connection + Zigpoll MCP Server，加快推进 Insightto 的 AI 自然语言查询功能：</strong>允许商家用中英文直接问"上周 NPS 下降的主要原因是什么"并获得引用数据的答案。MCP 协议接入已成 Shopify Survey 工具标配，Insightto 应在 Q3 排入路线图，避免 AI 可接入性差距持续拉大。
+  <main class="container">
+    <section class="summary-bar">
+      <div class="summary-card">
+        <div class="summary-label">近期仍可验证锚点</div>
+        <div class="summary-value">10</div>
+        <div class="summary-note">AskNicely 与 Qualtrics 各新增 1 个更近的 7 月官方锚点，其余仍以 6-7 月稳定来源为主。</div>
       </div>
-    </div>
-    <div class="action-item">
-      <div class="action-num">02</div>
-      <div class="action-text">
-        <strong>【紧急】针对 AskNicely Review Routing Agent（7/14）构建差异化叙事：</strong>AskNicely 已将 NPS 调查→声誉管理→公开评论增长形成完整 AI 闭环，定位为"多门店服务业"平台。Insightto 应在产品页/博客中突出"Shopify 电商场景的 NPS→复购行为转化"路径，与 AskNicely 的服务业声誉路径区分，避免在相同叙事框架下竞争。同时评估在 Insightto 内加入评论平台引导功能（调查高分→引导 Google/Trustpilot 评论）的可行性。
+      <div class="summary-card">
+        <div class="summary-label">保守写为无重大更新</div>
+        <div class="summary-value">3</div>
+        <div class="summary-note">Grapevine、Zigpoll、Hotjar 截至 2026-07-16 仍未检到能稳定落到当天发布日期的官方新发布。</div>
       </div>
-    </div>
-    <div class="action-item">
-      <div class="action-num">03</div>
-      <div class="action-text">
-        <strong>【持续跟进】Delighted 停服第 16 天，维持迁移流量承接布局：</strong>确保"Delighted alternative Shopify"、"Delighted replacement NPS"等 SEO 长尾词页面持续更新（突出 Insightto vs Qualtrics 定价、Insightto vs Grapevine 功能对比），并考虑针对 Delighted 用户推出限时迁移优惠（如免费导入历史 NPS 数据），与 Grapevine $25/mo 无限响应的定价策略正面竞争，赢取 Q3 迁移窗口内的 Shopify 商家。
+      <div class="summary-card">
+        <div class="summary-label">直接相关高亮</div>
+        <div class="summary-value">7</div>
+        <div class="summary-note">焦点集中在 review routing、evidence trace、no-code intercept 设计、Shopify 原生工作流与 Delighted 迁移承接。</div>
       </div>
+    </section>
+
+    <section class="trend-box">
+      <h3>今日行业趋势</h3>
+      <ul>
+        <li><strong>AI 闭环从“总结反馈”继续推进到“分发公开口碑”。</strong>AskNicely 在 <strong>2026-07-14</strong> 发布 Review Routing Agent，把 survey 提交后的高分用户直接路由到 Google、Yelp、Facebook 等评论平台，说明 CX 工具的竞争边界已延展到 AI 可见度与 reputation growth。</li>
+        <li><strong>企业级反馈产品正在把复杂配置继续产品化、可视化。</strong>Qualtrics 在 <strong>2026-07-15</strong> 周更中上线 Appearance Studio 和多语言 Audio &amp; Video 自动摘要能力，意味着 intercept 设计、可访问性和跨语言总结越来越像标配，而不是专业服务。</li>
+        <li><strong>“AI 很强”不再够，市场更在意它是否建立在真人反馈之上。</strong>SurveyMonkey 在 <strong>2026-07-14</strong> 的研究显示，<strong>66%</strong> 更信任 real people 的 input，<strong>51%</strong> 会 distrust synthetic survey responses；这会继续压缩“合成反馈替代真人反馈”的叙事空间。</li>
+        <li><strong>Shopify 原生问卷工具的竞争点仍是“能否更快接入商家既有工作流”。</strong>Fairing 继续把 Shopify Analytics 原生闭环作为主轴，Grapevine 与 Zigpoll 则把 MCP / AI analytics 固化在 App Store 公共卖点里，说明商家越来越期待 survey 数据直接进入日常运营系统。</li>
+        <li><strong>Delighted 停服后的胜负手已经从“谁是替代品”变成“谁能最快恢复持续监听”。</strong>Fairing、SmartSurvey 和 Shopify 原生玩家都在围绕迁移叙事销售 program-level 能力，Insightto 若只卖单点 popup，会越来越难接住迁移需求。</li>
+      </ul>
+    </section>
+
+    <div class="section-label">🛍 Shopify 原生竞品</div>
+
+    <section class="comp-section">
+      <div class="comp-header">
+        <div class="comp-name">Fairing</div>
+        <span class="comp-cat">购后调研 / NPS / Attribution</span>
+        <span class="shopify-badge">Shopify</span>
+        <span class="source-tag">官方 blog + Shopify App Store</span>
+      </div>
+      <div class="comp-body">
+        <div class="update-item">
+          <div class="date-chip">2026-04-02</div>
+          <strong>Fairing Data Now Lives in Shopify Analytics</strong>：官方 blog 确认可把 survey responses 写入 Shopify metafield objects，并在 Shopify Analytics / ShopifyQL 中直接查询，强化 survey 数据进入原生商家分析面的闭环。
+        </div>
+        <div class="update-item">
+          <div class="date-chip">2026-01-15</div>
+          <strong>How to Migrate Your NPS Surveys from Delighted to Fairing</strong>：官方 blog 直接承接 Delighted 停服迁移，强调 NPS 已包含在 plan 中、可与 Shopify 订单数据和 Klaviyo 联动。
+        </div>
+        <div class="update-item highlight-row">
+          <div class="date-chip">2026-04-02 / 2026-07-16 复核</div>
+          ⚡ <strong>Insightto 需要持续防守“Shopify 原生分析闭环 + Delighted 迁移包”组合。</strong>Fairing 的公开叙事已经不是单纯收集答案，而是让 survey 结果直接进入商家的 Shopify 运营视图。
+        </div>
+      </div>
+    </section>
+
+    <section class="comp-section">
+      <div class="comp-header">
+        <div class="comp-name">Grapevine Surveys</div>
+        <span class="comp-cat">NPS / CSAT / Attribution</span>
+        <span class="shopify-badge">Shopify</span>
+        <span class="source-tag">Shopify App Store 公共页</span>
+      </div>
+      <div class="comp-body">
+        <p class="no-update">无重大更新。今日复核 App Store 公共页时，Grapevine 仍把 <strong>MCP integration</strong>、按 <strong>order value / product / country / customer</strong> 定向、以及 <strong>Klaviyo / Shopify Flow / GA4</strong> 数据流转作为核心卖点；页面内较新的可见日期仍主要来自 merchant reviews，而不是官方 release note，因此不升级成 2026-07-16 新发布。</p>
+      </div>
+    </section>
+
+    <section class="comp-section">
+      <div class="comp-header">
+        <div class="comp-name">Zigpoll</div>
+        <span class="comp-cat">Post-purchase / On-site Survey</span>
+        <span class="shopify-badge">Shopify</span>
+        <span class="source-tag">Shopify App Store 公共页</span>
+      </div>
+      <div class="comp-body">
+        <p class="no-update">无重大更新。今日复核 App Store 公共页时，Zigpoll 仍公开主打 <strong>post-purchase / pre-purchase / NPS / email / SMS surveys</strong>、<strong>AI analytics</strong> 与多语言 survey 交付；较新可见日期仍主要来自 merchant reviews，而不是官方产品发布日期，因此继续保守处理。</p>
+      </div>
+    </section>
+
+    <div class="section-label">🧠 通用 Survey / CX 竞品</div>
+
+    <section class="comp-section">
+      <div class="comp-header">
+        <div class="comp-name">AskNicely</div>
+        <span class="comp-cat">NPS / Feedback Ops / Reputation</span>
+        <span class="source-tag">官方 blog</span>
+      </div>
+      <div class="comp-body">
+        <div class="update-item">
+          <div class="date-chip">2026-07-14</div>
+          <strong>Review Routing Agent</strong>：官方 blog 宣布 NiceAI 新增 review routing agent，可在 survey 提交后按平台份额、区域或门店规则，把高分客户自动路由到 Google、Yelp、Facebook 等公开评论平台，并归因到正确 location / team member。
+        </div>
+        <div class="update-item">
+          <div class="date-chip">2026-06-02</div>
+          <strong>AI Agents to Automate Customer Insights and Reputation Management</strong>：官方 blog 公布 Insights Agent 与 Response Agent，把反馈分析和后续响应自动化拉到产品层。
+        </div>
+        <div class="update-item highlight-row">
+          <div class="date-chip">2026-07-14</div>
+          ⚡ <strong>Insightto 需要认真评估“高分用户导向公开评论”的后续动作层。</strong>AskNicely 已把 survey → insight → response → public review growth 串成闭环，这会直接抬高市场对反馈工具 ROI 的预期。
+        </div>
+      </div>
+    </section>
+
+    <section class="comp-section">
+      <div class="comp-header">
+        <div class="comp-name">Survicate</div>
+        <span class="comp-cat">Survey / NPS / Research Hub</span>
+        <span class="source-tag">官方 changelog</span>
+      </div>
+      <div class="comp-body">
+        <div class="update-item">
+          <div class="date-chip">2026-07-08</div>
+          <strong>Research Hub transcript 回放</strong>：官方 changelog 写明可以在 transcript 中逐行定位，并让录音 / 录像直接跳到对应片段。
+        </div>
+        <div class="update-item">
+          <div class="date-chip">2026-07-06</div>
+          <strong>Three updates, a lot more control</strong>：官方 changelog 把 survey creator 的三项精控能力打包上线，继续优化问卷行为控制。
+        </div>
+        <div class="update-item">
+          <div class="date-chip">2026-06-30</div>
+          <strong>One-page view</strong>：link survey 可在单页展示全部题目，减少逐页点击并保留 AI follow-up。
+        </div>
+        <div class="update-item highlight-row">
+          <div class="date-chip">2026-07-08</div>
+          ⚡ <strong>“AI 洞察要能点回原始证据”仍是 Survicate 的清晰差异点。</strong>Insightto 若继续强调 AI，总结页最好补上原始反馈引用或 evidence trace，而不是只给主题标签。</div>
+      </div>
+    </section>
+
+    <section class="comp-section">
+      <div class="comp-header">
+        <div class="comp-name">Typeform</div>
+        <span class="comp-cat">Form / AI Research</span>
+        <span class="source-tag">官方 news / what's new</span>
+      </div>
+      <div class="comp-body">
+        <div class="update-item">
+          <div class="date-chip">2026-06-24</div>
+          <strong>ISO/IEC 42001 certification</strong>：官方新闻把 Responsible AI Management 认证作为核心对外信号，强调 AI governance 与持续改进。
+        </div>
+        <div class="update-item">
+          <div class="date-chip">2026-06-09</div>
+          <strong>Research Flow</strong>：官方新闻发布 AI-moderated research workflow，覆盖 study design、participant recruitment、moderated survey / interview 与 synthesis。
+        </div>
+        <div class="update-item highlight-row">
+          <div class="date-chip">2026-06-24</div>
+          ⚡ <strong>可信 AI 与研究工作流被绑定售卖。</strong>Insightto 的 AI 价值叙事如果只强调“更快总结”，在信任与治理层面会明显偏弱。</div>
+      </div>
+    </section>
+
+    <section class="comp-section">
+      <div class="comp-header">
+        <div class="comp-name">SurveyMonkey</div>
+        <span class="comp-cat">Survey Platform / Research</span>
+        <span class="source-tag">官方 Curiosity / research</span>
+      </div>
+      <div class="comp-body">
+        <div class="update-item">
+          <div class="date-chip">2026-07-14</div>
+          <strong>SurveyMonkey Research: Q1 2026 AI Sentiment Study</strong>：官方研究页写明 <strong>33%</strong> 的美国成年人已每周或每天使用 AI，<strong>34%</strong> 的全职员工会在工作中高频用 AI；但 <strong>66%</strong> 更信任 real people 的 input，且 <strong>51%</strong> 会 distrust synthetic survey responses。
+        </div>
+        <div class="update-item">
+          <div class="date-chip">2026-07-06</div>
+          <strong>Conversational AI survey builder</strong>：官方 Curiosity 页面确认用户可通过对话方式改 tone、改题目、加 logic、直接生成 shareable link。
+        </div>
+        <div class="update-item">
+          <div class="date-chip">2026-06-10</div>
+          <strong>SurveyMonkey LaunchPad Is Now Live</strong>：官方 Curiosity 页面确认 LaunchPad 正式可用，主打把复杂市场研究模板化并降低 DIY research 门槛。
+        </div>
+        <div class="update-item highlight-row">
+          <div class="date-chip">2026-07-14 / 2026-07-06</div>
+          ⚡ <strong>Insightto 不适合把 AI 价值建在 synthetic feedback 上。</strong>更稳的方向仍是让 AI 帮商家更快拿到真人反馈、自动追问、归纳并保留证据链。</div>
+      </div>
+    </section>
+
+    <section class="comp-section">
+      <div class="comp-header">
+        <div class="comp-name">Qualtrics</div>
+        <span class="comp-cat">Enterprise XM / Research</span>
+        <span class="source-tag">官方 weekly release notes</span>
+      </div>
+      <div class="comp-body">
+        <div class="update-item">
+          <div class="date-chip">2026-07-15</div>
+          <strong>Appearance Studio</strong>：官方周更新增 digital intercept 可视化编辑器，可做 responsive layouts、brand styling、accessibility 与 translation 配置，无需自定义 CSS。
+        </div>
+        <div class="update-item">
+          <div class="date-chip">2026-07-15</div>
+          <strong>Audio &amp; Video Language Updates</strong>：自动 summaries、chapters 与 interview notes 可在英语以外的语言生成，并支持重新生成额外语言版本。
+        </div>
+        <div class="update-item">
+          <div class="date-chip">2026-07-08</div>
+          <strong>Research Agent for Conjoint / MaxDiff Projects</strong>：官方周更明确把 AI-powered Research Agent 加到项目启动流程里。
+        </div>
+        <div class="update-item highlight-row">
+          <div class="date-chip">2026-07-15</div>
+          ⚡ <strong>企业玩家正在把“设计、国际化、AI 总结”一起打包成默认能力。</strong>Insightto 若要继续走中轻量商家路线，需要把可用性和默认模板体验拉得更顺，而不只是堆分析功能。</div>
+      </div>
+    </section>
+
+    <section class="comp-section">
+      <div class="comp-header">
+        <div class="comp-name">Medallia</div>
+        <span class="comp-cat">Enterprise CX / AI</span>
+        <span class="source-tag">官方 blog</span>
+      </div>
+      <div class="comp-body">
+        <div class="update-item">
+          <div class="date-chip">2026-06-17</div>
+          <strong>We’re Reinventing Medallia for the AI Era</strong>：官方 blog 直接把平台重心指向 AI era，强调让 AI 成为经验管理的内层引擎而不是外挂功能。
+        </div>
+        <div class="update-item highlight-row">
+          <div class="date-chip">2026-06-17</div>
+          ⚡ <strong>“反馈运营层”而不是“单点问卷工具”</strong> 仍是大厂叙事方向。Insightto 对外表达也可以更明确地强调 merchant feedback loop，而不只是一套 survey widget。</div>
+      </div>
+    </section>
+
+    <section class="comp-section">
+      <div class="comp-header">
+        <div class="comp-name">Hotjar / Contentsquare</div>
+        <span class="comp-cat">Behavior Analytics / Surveys</span>
+        <span class="source-tag">官方 updates / blog</span>
+      </div>
+      <div class="comp-body">
+        <p class="no-update">无重大更新。今日复核 Hotjar 公共 updates 与 blog 时，虽然仍能看到 survey analysis、feedback 与 AI 相关公开能力叙述，但没有快速定位到带稳定发布日期的 <strong>2026 survey / feedback 官方新发布</strong>；因此继续保守写为无重大更新，不把当前能力页升级成 2026-07-16 的产品更新。</p>
+      </div>
+    </section>
+
+    <section class="comp-section">
+      <div class="comp-header">
+        <div class="comp-name">Birdeye</div>
+        <span class="comp-cat">Reputation / Feedback / AI</span>
+        <span class="source-tag">官方 press + blog</span>
+      </div>
+      <div class="comp-body">
+        <div class="update-item">
+          <div class="date-chip">2026-05-27</div>
+          <strong>G2 Summer 2026 Awards</strong>：官方 press 强调 AI innovation 与 enterprise adoption 增长，继续把 reviews、messaging、automation 和 feedback 运营捆成一体。
+        </div>
+        <div class="update-item">
+          <div class="date-chip">2026-06-12</div>
+          <strong>Best AI Marketing Platforms for Multi-Location Brands in 2026</strong>：官方 blog 把产品重新定位成 unified tools for reviews, listings, social, messaging, and automation。
+        </div>
+        <div class="update-item highlight-row">
+          <div class="date-chip">2026-06-12</div>
+          ⚡ <strong>评论、消息、自动化、反馈正在被统一售卖成运营层。</strong>Insightto 如果只停在 survey 分析，长期会面临被更大一体化平台从预算侧覆盖的风险。</div>
+      </div>
+    </section>
+
+    <section class="comp-section">
+      <div class="comp-header">
+        <div class="comp-name">SmartSurvey</div>
+        <span class="comp-cat">NPS / Survey / Delighted 承接</span>
+        <span class="source-tag">官方 blog</span>
+      </div>
+      <div class="comp-body">
+        <div class="update-item">
+          <div class="date-chip">2026-06-24</div>
+          <strong>Move from scores to outcomes</strong>：官方 blog 公开强调 CX 团队需要把 CSAT / NPS / CES 从分数转成 ROI、retention、churn 等业务结果叙事。
+        </div>
+        <div class="update-item">
+          <div class="date-chip">2026-01-24</div>
+          <strong>SmartSurvey vs Delighted</strong>：官方 blog 直接承接 Delighted 停服迁移，明确写出 2026-06-30 数据删除与迁移时点。
+        </div>
+        <div class="update-item highlight-row">
+          <div class="date-chip">2026-06-24 / 2026-01-24</div>
+          ⚡ <strong>“Delighted 迁移 + 结果导向 CX 叙事”</strong> 对中轻量反馈市场仍有吸引力。Insightto 的迁移页不能只讲问卷功能，还要讲商家为什么能更快恢复业务闭环。</div>
+      </div>
+    </section>
+
+    <div class="section-label">⛔ 停服竞品</div>
+
+    <section class="comp-section">
+      <div class="comp-header">
+        <div class="comp-name">Delighted</div>
+        <span class="comp-cat">NPS / CSAT / CES</span>
+        <span class="shutdown-badge">Shutdown</span>
+        <span class="source-tag">官方 sunset / FAQ 时间边界</span>
+      </div>
+      <div class="comp-body">
+        <div class="update-item shutdown-row">
+          <div class="date-chip">2026-06-30 / 2026-07-01</div>
+          <strong>停服状态保持不变</strong>：sunset 已于 2026-06-30 到达，customer access termination 已于 2026-07-01 发生。今天不再使用任何倒计时措辞。
+        </div>
+      </div>
+    </section>
+
+    <section class="action-section">
+      <h2>📌 对 Insightto 的 3 条具体行动建议</h2>
+      <div class="action-item">
+        <div class="action-num">1</div>
+        <div class="action-text">
+          <strong>补一个“高分用户转公开评论”的轻量后续动作。</strong>不必先做成 AskNicely 那种多门店大系统，但至少可以验证 Shopify 商家是否愿意在 NPS 9-10 分后直接引导到 Google / Trustpilot / Judge.me 等公开口碑场景。
+        </div>
+      </div>
+      <div class="action-item">
+        <div class="action-num">2</div>
+        <div class="action-text">
+          <strong>把 AI 输出补成“有证据、可回放、能落地”的结果页。</strong>优先加入代表性原始回答引用、主题证据链、以及 merchant 可一键复制的 follow-up 建议，去对冲 Survicate / Qualtrics 这类“AI + 可追溯”组合。
+        </div>
+      </div>
+      <div class="action-item">
+        <div class="action-num">3</div>
+        <div class="action-text">
+          <strong>重写 Delighted migration 叙事，核心卖点改成“恢复持续监听工作流”。</strong>页面上要具体说明商家多久能恢复 NPS、如何接 follow-up、数据如何留在 Shopify 运营链路里，而不是只做功能对照表。
+        </div>
+      </div>
+    </section>
+
+    <div class="section-label">🧾 任务日志</div>
+
+    <section class="comp-section">
+      <div class="comp-body">
+        <div class="update-item">
+          <strong>生成路径：</strong><code>reports/daily/daily_2026-07-16.html</code> → <code>latest_daily_report.html</code> → <code>python3 build_index.py</code>
+        </div>
+        <div class="update-item">
+          <strong>关键来源：</strong>AskNicely official blog (<strong>2026-07-14</strong>, <strong>2026-06-02</strong>)；Qualtrics Weekly Product Release Notes (<strong>2026-07-15</strong>, <strong>2026-07-08</strong>)；SurveyMonkey Curiosity / research (<strong>2026-07-14</strong>, <strong>2026-07-06</strong>, <strong>2026-06-10</strong>)；Survicate changelog (<strong>2026-07-08</strong>, <strong>2026-07-06</strong>, <strong>2026-06-30</strong>)；Typeform official news / what's new (<strong>2026-06-24</strong>, <strong>2026-06-09</strong>)；Fairing official blog (<strong>2026-04-02</strong>, <strong>2026-01-15</strong>)；Medallia official blog (<strong>2026-06-17</strong>)；Birdeye press / blog (<strong>2026-05-27</strong>, <strong>2026-06-12</strong>)；SmartSurvey official blog (<strong>2026-06-24</strong>, <strong>2026-01-24</strong>)；Shopify App Store 公共页（复核日期 <strong>2026-07-16</strong>）。
+        </div>
+        <div class="update-item">
+          <strong>无法验证点：</strong>Grapevine 与 Zigpoll 今日公开可见的较新日期仍主要来自 merchant reviews，而不是官方产品发布日期；因此只能用来证明“当前公开卖点仍在”，不能升级成当天发布。Hotjar / Contentsquare 方面，今天没有快速定位到带稳定发布日期的 2026 survey / feedback 官方新发布，因此继续保守写为无重大更新。Birdeye、Medallia、Typeform 今天虽有更近的 thought leadership / current-state 公开页，但未检到比现有锚点更稳的产品发布日期，因此继续沿用 6 月前后更强锚点。Delighted 方面，今天只按公开 sunset / termination 时间边界写状态，没有做账户级登录可用性实测。
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      <p>来源范围：官方 changelog、release notes、blog、Shopify App Store 公共页（复核日期：2026-07-16）</p>
+      <p style="margin-top: 6px;">Insightto 竞品日报 · 本地生成，未 push</p>
     </div>
-  </div>
-
-  <div class="footer">
-    Insightto 竞品情报系统 · 自动生成于 2026-07-16 17:55 · 共监控 11 家竞品<br>
-    <a href="https://lixin970830-cell.github.io/insightto-competitor-intel/" style="color:#5c4fff;">查看完整情报中心</a>
-  </div>
-
-</div>
+  </main>
 </body>
 </html>
